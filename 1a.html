@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Tugas Akhir Bab 1 Berpikir Komputasional - SMAN 1 Kersana</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0284c7',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                            dark: '#0B0F19',
+                            cardDark: '#111827',
+                            accent: '#38bdf8',
+                            purple: '#8b5cf6'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts & FontAwesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom Style Enhancements -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .code-font {
+            font-family: 'Fira Code', monospace;
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .light .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f19;
+        }
+        .light ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0284c7;
+            border-radius: 4px;
+        }
+        /* Animations */
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        .animate-glow {
+            animation: pulseGlow 4s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-[#0B0F19] text-gray-100 min-h-screen flex flex-col transition-colors duration-300 light:bg-slate-50 light:text-slate-800">
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="sticky top-0 z-50 bg-[#0B0F19]/90 light:bg-white/90 backdrop-blur-md border-b border-gray-800 light:border-slate-200 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                
+                <!-- Brand Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer" onclick="navigateTo('home')">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-sky-500/20">
+                        <i class="fa-solid fa-brain text-xl"></i>
+                    </div>
+                    <div>
+                        <span class="font-bold text-lg text-white light:text-slate-900 tracking-tight block leading-tight">SMAN 1 KERSANA</span>
+                        <span class="text-xs text-sky-400 font-mono font-medium">Koding & Kecerdasan Artifisial</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="navigateTo('home')" id="nav-home" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all text-sky-400 bg-sky-500/10">
+                        <i class="fa-solid fa-house mr-1.5"></i> HOME
+                    </button>
+                    <button onclick="navigateTo('materi')" id="nav-materi" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all text-gray-300 hover:text-white hover:bg-gray-800 light:text-slate-600 light:hover:text-slate-900 light:hover:bg-slate-100">
+                        <i class="fa-solid fa-book-open mr-1.5"></i> MATERI
+                    </button>
+                    <button onclick="navigateTo('x3')" id="nav-x3" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all text-gray-300 hover:text-white hover:bg-gray-800 light:text-slate-600 light:hover:text-slate-900 light:hover:bg-slate-100">
+                        <i class="fa-solid fa-graduation-cap mr-1.5"></i> TUGAS AKHIR X-3
+                    </button>
+                    <button onclick="navigateTo('x4')" id="nav-x4" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all text-gray-300 hover:text-white hover:bg-gray-800 light:text-slate-600 light:hover:text-slate-900 light:hover:bg-slate-100">
+                        <i class="fa-solid fa-graduation-cap mr-1.5"></i> TUGAS AKHIR X-4
+                    </button>
+                    <button onclick="navigateTo('guru')" id="nav-guru" class="nav-link px-3 py-2 rounded-lg text-sm font-medium transition-all text-gray-300 hover:text-white hover:bg-gray-800 light:text-slate-600 light:hover:text-slate-900 light:hover:bg-slate-100">
+                        <i class="fa-solid fa-user-tie mr-1.5"></i> PROFIL GURU
+                    </button>
+                </nav>
+
+                <!-- Action Controls (Theme Toggle & Fullscreen) -->
+                <div class="flex items-center space-x-2">
+                    <!-- Fullscreen Toggle -->
+                    <button onclick="toggleFullscreen()" class="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 light:hover:bg-slate-100 light:text-slate-600 transition" title="Layar Penuh (Fullscreen)">
+                        <i id="fullscreen-icon" class="fa-solid fa-expand text-base"></i>
+                    </button>
+                    
+                    <!-- Dark/Light Mode Toggle -->
+                    <button onclick="toggleTheme()" class="p-2.5 rounded-lg text-amber-400 hover:bg-gray-800 light:hover:bg-slate-100 light:text-indigo-600 transition" title="Ganti Mode Terang/Gelap">
+                        <i id="theme-icon" class="fa-solid fa-sun text-base"></i>
+                    </button>
+
+                    <!-- Mobile Menu Hamburger Button -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-400 hover:text-white hover:bg-gray-800 light:text-slate-600">
+                        <i id="mobile-menu-icon" class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-b border-gray-800 light:border-slate-200 bg-[#0B0F19] light:bg-white px-4 pt-2 pb-4 space-y-2">
+            <button onclick="navigateTo('home'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-sky-400 bg-sky-500/10 flex items-center">
+                <i class="fa-solid fa-house w-6"></i> HOME
+            </button>
+            <button onclick="navigateTo('materi'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 light:text-slate-700 hover:bg-gray-800 light:hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-book-open w-6"></i> MATERI
+            </button>
+            <button onclick="navigateTo('x3'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 light:text-slate-700 hover:bg-gray-800 light:hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-graduation-cap w-6"></i> TUGAS AKHIR X-3
+            </button>
+            <button onclick="navigateTo('x4'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 light:text-slate-700 hover:bg-gray-800 light:hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-graduation-cap w-6"></i> TUGAS AKHIR X-4
+            </button>
+            <button onclick="navigateTo('guru'); toggleMobileMenu()" class="w-full text-left px-4 py-2.5 rounded-lg text-sm font-medium text-gray-300 light:text-slate-700 hover:bg-gray-800 light:hover:bg-slate-100 flex items-center">
+                <i class="fa-solid fa-user-tie w-6"></i> PROFIL GURU
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ==================== 1. PAGE: HOME ==================== -->
+        <section id="page-home" class="page-section space-y-12">
+            
+            <!-- Hero Section -->
+            <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 via-slate-900 to-sky-950 light:from-slate-100 light:via-sky-50 light:to-indigo-50 border border-sky-500/20 p-8 sm:p-12 lg:p-16 shadow-2xl">
+                
+                <!-- Background Floating Decorative Elements -->
+                <div class="absolute -top-24 -right-24 w-96 h-96 bg-sky-500/10 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+                <div class="absolute -bottom-24 -left-24 w-96 h-96 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none animate-glow"></div>
+
+                <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    
+                    <!-- Hero Text Content -->
+                    <div class="lg:col-span-7 space-y-6 text-left">
+                        <div class="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 light:text-sky-700 text-xs font-semibold font-mono tracking-wide">
+                            <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                            <span>PORTAL PEMBELAJARAN DIGITAL</span>
+                        </div>
+                        
+                        <div>
+                            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white light:text-slate-900 tracking-tight leading-tight">
+                                REKAP TUGAS AKHIR BAB 1 <br>
+                                <span class="bg-gradient-to-r from-sky-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">BERPIKIR KOMPUTASIONAL</span>
+                            </h1>
+                            <p class="mt-4 text-base sm:text-lg text-gray-300 light:text-slate-600 font-medium">
+                                Mata Pelajaran Koding dan Kecerdasan Artifisial – Kelas X-3 & X-4 <br>
+                                <strong class="text-sky-400 light:text-sky-700 font-semibold">SMA Negeri 1 Kersana</strong>
+                            </p>
+                        </div>
+
+                        <!-- Teacher Badge -->
+                        <div class="inline-flex items-center space-x-3 p-3 rounded-2xl bg-gray-800/80 light:bg-white/80 border border-gray-700 light:border-slate-200 backdrop-blur-md shadow-md">
+                            <div class="w-10 h-10 rounded-full bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold text-lg">
+                                <i class="fa-solid fa-user-check"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs text-gray-400 light:text-slate-500 uppercase font-mono font-medium">Guru Pengampu</p>
+                                <p class="text-sm font-bold text-white light:text-slate-800">M. FAISAL ABDUH, M.Pd.</p>
+                            </div>
+                        </div>
+
+                        <!-- Tech Badges -->
+                        <div class="flex flex-wrap gap-2 text-xs font-mono text-gray-400 light:text-slate-600 pt-2">
+                            <span class="px-2.5 py-1 rounded-md bg-gray-800 light:bg-slate-200 border border-gray-700 light:border-slate-300">&lt;/&gt; Koding</span>
+                            <span class="px-2.5 py-1 rounded-md bg-gray-800 light:bg-slate-200 border border-gray-700 light:border-slate-300">{ } Algoritma</span>
+                            <span class="px-2.5 py-1 rounded-md bg-gray-800 light:bg-slate-200 border border-gray-700 light:border-slate-300"><i class="fa-solid fa-microchip mr-1"></i> AI Neural Net</span>
+                            <span class="px-2.5 py-1 rounded-md bg-gray-800 light:bg-slate-200 border border-gray-700 light:border-slate-300">010101 Binary</span>
+                        </div>
+                    </div>
+
+                    <!-- Visual Code & AI Simulation Graphic -->
+                    <div class="lg:col-span-5 flex justify-center">
+                        <div class="w-full max-w-sm rounded-2xl bg-gray-950 light:bg-slate-900 border border-gray-800 p-4 shadow-2xl code-font text-xs text-gray-300 space-y-3 relative">
+                            <!-- Terminal Bar -->
+                            <div class="flex items-center justify-between pb-2 border-b border-gray-800">
+                                <div class="flex space-x-1.5">
+                                    <div class="w-3 h-3 rounded-full bg-rose-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-amber-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                                </div>
+                                <span class="text-gray-500 text-[10px]">berpikir_komputasional.py</span>
+                            </div>
+
+                            <!-- Code Content -->
+                            <div class="space-y-1.5 text-left">
+                                <p><span class="text-purple-400">class</span> <span class="text-sky-300">BerpikirKomputasional</span>:</p>
+                                <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-300">__init__</span>(self):</p>
+                                <p class="pl-8 text-emerald-400">self.pilar = ["Dekomposisi", "Pola", "Abstraksi", "Algoritma"]</p>
+                                <p class="pl-4"><span class="text-purple-400">def</span> <span class="text-blue-300">solve_problem</span>(self, problem, ai_assisted=True):</p>
+                                <p class="pl-8 text-amber-300"># Solusi Terstruktur + AI</p>
+                                <p class="pl-8 text-sky-300">return f"Solusi Optimal untuk {problem}"</p>
+                                <p class="pt-2 text-gray-500"># Output: 100% Solved</p>
+                            </div>
+
+                            <!-- Status Bar -->
+                            <div class="pt-2 border-t border-gray-800/80 flex items-center justify-between text-[11px] text-emerald-400">
+                                <span><i class="fa-solid fa-circle text-[8px] mr-1 animate-pulse"></i> AI Kernel Active</span>
+                                <span>SMA 1 KERSANA</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 3 Main Big Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- CARD 1: MATERI -->
+                <div onclick="navigateTo('materi')" class="group glass-card p-6 rounded-2xl cursor-pointer hover:border-sky-500/50 hover:shadow-xl hover:shadow-sky-500/10 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-sky-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-terminal"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white light:text-slate-900 group-hover:text-sky-400 transition-colors">MATERI BAB 1</h3>
+                    <p class="mt-2 text-sm text-gray-400 light:text-slate-600 leading-relaxed">
+                        Ringkasan komprehensif Berpikir Komputasional, 4 pilar, analisis masalah, simulasi, dan integrasi Kecerdasan Artifisial.
+                    </p>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-sky-400">
+                        <span>Pelajari Materi</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- CARD 2: TUGAS AKHIR X-3 -->
+                <div onclick="navigateTo('x3')" class="group glass-card p-6 rounded-2xl cursor-pointer hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-indigo-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white light:text-slate-900 group-hover:text-indigo-400 transition-colors">TUGAS AKHIR X-3</h3>
+                    <p class="mt-2 text-sm text-gray-400 light:text-slate-600 leading-relaxed">
+                        Galeri Curriculum Vitae (CV) digital karya 36 murid Kelas X-3 SMA Negeri 1 Kersana.
+                    </p>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-indigo-400">
+                        <span>Lihat CV Kelas X-3</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- CARD 3: TUGAS AKHIR X-4 -->
+                <div onclick="navigateTo('x4')" class="group glass-card p-6 rounded-2xl cursor-pointer hover:border-purple-500/50 hover:shadow-xl hover:shadow-purple-500/10 transition-all duration-300 transform hover:-translate-y-1">
+                    <div class="w-14 h-14 rounded-xl bg-purple-500/10 border border-purple-500/20 text-purple-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 group-hover:bg-purple-500 group-hover:text-white transition-all">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white light:text-slate-900 group-hover:text-purple-400 transition-colors">TUGAS AKHIR X-4</h3>
+                    <p class="mt-2 text-sm text-gray-400 light:text-slate-600 leading-relaxed">
+                        Galeri Curriculum Vitae (CV) digital karya 36 murid Kelas X-4 SMA Negeri 1 Kersana.
+                    </p>
+                    <div class="mt-4 flex items-center text-xs font-semibold text-purple-400">
+                        <span>Lihat CV Kelas X-4</span> <i class="fa-solid fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simple Statistics Section -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-gray-800 light:border-slate-200">
+                <h4 class="text-center text-xs font-mono font-bold uppercase tracking-wider text-gray-400 light:text-slate-500 mb-6">STATISTIK KELAS & MURID</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                    <div class="p-4 rounded-xl bg-gray-900/60 light:bg-slate-100 border border-gray-800/80 light:border-slate-200">
+                        <p class="text-3xl font-extrabold text-sky-400">72</p>
+                        <p class="text-xs text-gray-400 light:text-slate-600 mt-1 font-medium">Total Murid</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-900/60 light:bg-slate-100 border border-gray-800/80 light:border-slate-200">
+                        <p class="text-3xl font-extrabold text-indigo-400">2</p>
+                        <p class="text-xs text-gray-400 light:text-slate-600 mt-1 font-medium">Rombongan Belajar</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-900/60 light:bg-slate-100 border border-gray-800/80 light:border-slate-200">
+                        <p class="text-3xl font-extrabold text-purple-400">36</p>
+                        <p class="text-xs text-gray-400 light:text-slate-600 mt-1 font-medium">Murid Kelas X-3</p>
+                    </div>
+                    <div class="p-4 rounded-xl bg-gray-900/60 light:bg-slate-100 border border-gray-800/80 light:border-slate-200">
+                        <p class="text-3xl font-extrabold text-emerald-400">36</p>
+                        <p class="text-xs text-gray-400 light:text-slate-600 mt-1 font-medium">Murid Kelas X-4</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== 2. PAGE: MATERI ==================== -->
+        <section id="page-materi" class="page-section hidden space-y-12">
+            
+            <!-- Header Banner -->
+            <div class="text-center space-y-3 max-w-3xl mx-auto">
+                <span class="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-xs font-mono font-semibold">RINGKASAN MODUL RESMI</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white light:text-slate-900 tracking-tight">MATERI BAB 1 – BERPIKIR KOMPUTASIONAL</h2>
+                <p class="text-gray-400 light:text-slate-600 text-sm sm:text-base">
+                    Mata Pelajaran Koding dan Kecerdasan Artifisial Kelas X SMA Negeri 1 Kersana
+                </p>
+            </div>
+
+            <!-- SUBBAB 1.1 -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="flex items-center space-x-3 border-b border-gray-800 light:border-slate-200 pb-4">
+                    <span class="px-3 py-1 rounded-lg bg-sky-500 text-white font-mono font-bold text-sm">1.1</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white light:text-slate-900">Penerapan Berpikir Komputasional dalam Pemecahan Masalah Sehari-hari</h3>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-300 light:text-slate-700 leading-relaxed">
+                    <div class="space-y-3 bg-gray-900/50 light:bg-slate-50 p-5 rounded-xl border border-gray-800 light:border-slate-200">
+                        <h4 class="font-bold text-sky-400 light:text-sky-700 text-base flex items-center">
+                            <i class="fa-solid fa-lightbulb mr-2"></i> Pengertian Berpikir Komputasional
+                        </h4>
+                        <p>
+                            Berpikir komputasional (Computational Thinking) adalah pendekatan penyelesaian masalah secara terstruktur dan logis dengan cara melatih seseorang untuk berpikir kritis seperti ilmuwan komputer. 
+                        </p>
+                    </div>
+                    <div class="space-y-3 bg-gray-900/50 light:bg-slate-50 p-5 rounded-xl border border-gray-800 light:border-slate-200">
+                        <h4 class="font-bold text-sky-400 light:text-sky-700 text-base flex items-center">
+                            <i class="fa-solid fa-bullseye mr-2"></i> Tujuan Penerapan
+                        </h4>
+                        <p>
+                            Memungkinkan peserta didik menganalisis masalah kompleks, memecahnya menjadi bagian kecil, serta merumuskan langkah strategis agar solusi yang ditemukan efisien, efektif, dan optimal untuk dijalankan oleh manusia maupun sistem mesin.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Contoh Masalah Kompleks -->
+                <div class="bg-gray-900/30 light:bg-slate-100 p-4 rounded-xl border border-gray-800 light:border-slate-200">
+                    <h4 class="text-sm font-bold text-gray-200 light:text-slate-800 mb-2">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-2"></i> Contoh Masalah Kompleks Sehari-hari:
+                    </h4>
+                    <ul class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-gray-300 light:text-slate-700">
+                        <li class="p-2.5 rounded-lg bg-gray-900 light:bg-white border border-gray-800 light:border-slate-200 flex items-center"><i class="fa-solid fa-car text-sky-400 mr-2"></i> Kemacetan lalu lintas jam berangkat sekolah</li>
+                        <li class="p-2.5 rounded-lg bg-gray-900 light:bg-white border border-gray-800 light:border-slate-200 flex items-center"><i class="fa-solid fa-route text-indigo-400 mr-2"></i> Penentuan rute terpendek dan tercepat</li>
+                        <li class="p-2.5 rounded-lg bg-gray-900 light:bg-white border border-gray-800 light:border-slate-200 flex items-center"><i class="fa-solid fa-utensils text-emerald-400 mr-2"></i> Penanganan antrean panjang di kantin sekolah</li>
+                    </ul>
+                </div>
+
+                <!-- 4 Cornerstone Visual Cards -->
+                <div>
+                    <h4 class="text-base font-bold text-white light:text-slate-900 mb-4">Empat Pilar / Cornerstone Berpikir Komputasional:</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <!-- Pilar 1 -->
+                        <div class="p-5 rounded-xl bg-gradient-to-b from-sky-950/40 to-gray-900 light:from-sky-50 light:to-white border border-sky-500/30 space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center font-bold">1</div>
+                            <h5 class="font-bold text-sky-400 light:text-sky-700">DEKOMPOSISI</h5>
+                            <p class="text-xs text-gray-300 light:text-slate-600 leading-relaxed">
+                                Membagi masalah besar menjadi bagian-bagian kecil yang lebih mudah dipecahkan (contoh: memisahkan tahapan proyek atau komponen kemacetan).
+                            </p>
+                        </div>
+                        <!-- Pilar 2 -->
+                        <div class="p-5 rounded-xl bg-gradient-to-b from-indigo-950/40 to-gray-900 light:from-indigo-50 light:to-white border border-indigo-500/30 space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center font-bold">2</div>
+                            <h5 class="font-bold text-indigo-400 light:text-indigo-700">PENGENALAN POLA</h5>
+                            <p class="text-xs text-gray-300 light:text-slate-600 leading-relaxed">
+                                Mendeteksi kesamaan atau tren dalam data atau situasi untuk mempermudah keputusan (contoh: mengenali jam-jam sibuk di jalan raya).
+                            </p>
+                        </div>
+                        <!-- Pilar 3 -->
+                        <div class="p-5 rounded-xl bg-gradient-to-b from-purple-950/40 to-gray-900 light:from-purple-50 light:to-white border border-purple-500/30 space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-purple-500/20 text-purple-400 flex items-center justify-center font-bold">3</div>
+                            <h5 class="font-bold text-purple-400 light:text-purple-700">ABSTRAKSI</h5>
+                            <p class="text-xs text-gray-300 light:text-slate-600 leading-relaxed">
+                                Menyaring informasi yang tidak diperlukan dan berfokus penuh pada aspek yang penting (contoh: mengabaikan warna bangunan saat pilih rute).
+                            </p>
+                        </div>
+                        <!-- Pilar 4 -->
+                        <div class="p-5 rounded-xl bg-gradient-to-b from-emerald-950/40 to-gray-900 light:from-emerald-50 light:to-white border border-emerald-500/30 space-y-2">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">4</div>
+                            <h5 class="font-bold text-emerald-400 light:text-emerald-700">ALGORITMA</h5>
+                            <p class="text-xs text-gray-300 light:text-slate-600 leading-relaxed">
+                                Menyusun langkah-langkah sistematis dan logis untuk mencapai solusi akhir yang konsisten (contoh: urutan tindakan navigasi).
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Process Flow Diagram -->
+                <div class="p-4 rounded-xl bg-gray-950 light:bg-slate-900 border border-gray-800 text-center">
+                    <p class="text-xs font-mono text-gray-400 mb-3">ALUR ALGORITMA PENYELESAIAN MASALAH</p>
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-xs font-bold text-white">
+                        <span class="px-3 py-1.5 rounded-lg bg-rose-600">MASALAH KOMPLEKS</span>
+                        <i class="fa-solid fa-arrow-right text-gray-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-sky-600">DEKOMPOSISI</span>
+                        <i class="fa-solid fa-arrow-right text-gray-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-indigo-600">PENGENALAN POLA</span>
+                        <i class="fa-solid fa-arrow-right text-gray-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-purple-600">ABSTRAKSI</span>
+                        <i class="fa-solid fa-arrow-right text-gray-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-amber-600">ALGORITMA</span>
+                        <i class="fa-solid fa-arrow-right text-gray-500"></i>
+                        <span class="px-3 py-1.5 rounded-lg bg-emerald-600">SOLUSI OPTIMAL</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBBAB 1.2 -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="flex items-center space-x-3 border-b border-gray-800 light:border-slate-200 pb-4">
+                    <span class="px-3 py-1 rounded-lg bg-indigo-500 text-white font-mono font-bold text-sm">1.2</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white light:text-slate-900">Analisis Masalah</h3>
+                </div>
+
+                <p class="text-sm text-gray-300 light:text-slate-700 leading-relaxed">
+                    <strong>Analisis masalah</strong> adalah proses sistematis dalam mengidentifikasi, memahami, dan mengevaluasi suatu permasalahan untuk menemukan solusi yang efektif. Proses ini membutuhkan <strong>berpikir kritis</strong> untuk menganalisis informasi secara objektif, mengidentifikasi bias, serta melalui tahapan pengumpulan informasi, identifikasi penyebab utama, dan pemilihan strategi penyelesaian.
+                </p>
+
+                <!-- Interactive 5 Whys Simulation Widget -->
+                <div class="p-6 rounded-xl bg-gray-900/80 light:bg-slate-100 border border-indigo-500/30 space-y-4">
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-indigo-400 light:text-indigo-700 text-sm sm:text-base flex items-center">
+                            <i class="fa-solid fa-sitemap mr-2"></i> METODE 5 WHYS (5 MENGAPA) - INTERAKTIF
+                        </h4>
+                        <span class="text-xs text-gray-400 font-mono">Studi Kasus PDF: Penurunan Nilai Murid</span>
+                    </div>
+
+                    <p class="text-xs text-gray-400 light:text-slate-600">Klik setiap tahapan "Mengapa" di bawah ini untuk mengurai akar permasalahan hingga tuntas:</p>
+
+                    <!-- Interactive Steps -->
+                    <div class="space-y-2 text-xs">
+                        <div class="p-3 rounded-lg bg-rose-950/40 border border-rose-500/40 text-rose-300 font-semibold">
+                            <strong>MASALAH UTAMA:</strong> Nilai Matematika & Bahasa Inggris siswa mengalami penurunan drastis.
+                        </div>
+
+                        <div onclick="toggleWhy(1)" class="p-3 rounded-lg bg-gray-800 light:bg-white border border-gray-700 light:border-slate-300 cursor-pointer hover:border-indigo-400 transition flex items-center justify-between">
+                            <span><strong class="text-indigo-400">MENGAPA 1:</strong> Mengapa nilai siswa turun?</span>
+                            <i id="why-icon-1" class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </div>
+                        <div id="why-ans-1" class="hidden pl-4 pr-2 py-2 text-gray-300 light:text-slate-700 border-l-2 border-indigo-500 bg-gray-900/40 light:bg-slate-50 rounded-r-lg">
+                            Jawaban: Siswa sering tidak mengumpulkan tugas tepat waktu dan kesulitan fokus saat ujian.
+                        </div>
+
+                        <div onclick="toggleWhy(2)" class="p-3 rounded-lg bg-gray-800 light:bg-white border border-gray-700 light:border-slate-300 cursor-pointer hover:border-indigo-400 transition flex items-center justify-between">
+                            <span><strong class="text-indigo-400">MENGAPA 2:</strong> Mengapa kesulitan fokus dan terlambat kumpul tugas?</span>
+                            <i id="why-icon-2" class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </div>
+                        <div id="why-ans-2" class="hidden pl-4 pr-2 py-2 text-gray-300 light:text-slate-700 border-l-2 border-indigo-500 bg-gray-900/40 light:bg-slate-50 rounded-r-lg">
+                            Jawaban: Siswa sering mengantuk di kelas karena tidur terlalu larut malam.
+                        </div>
+
+                        <div onclick="toggleWhy(3)" class="p-3 rounded-lg bg-gray-800 light:bg-white border border-gray-700 light:border-slate-300 cursor-pointer hover:border-indigo-400 transition flex items-center justify-between">
+                            <span><strong class="text-indigo-400">MENGAPA 3:</strong> Mengapa tidur terlalu larut malam?</span>
+                            <i id="why-icon-3" class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </div>
+                        <div id="why-ans-3" class="hidden pl-4 pr-2 py-2 text-gray-300 light:text-slate-700 border-l-2 border-indigo-500 bg-gray-900/40 light:bg-slate-50 rounded-r-lg">
+                            Jawaban: Siswa menghabiskan waktu bermain game hingga larut malam tanpa manajemen waktu.
+                        </div>
+
+                        <div onclick="toggleWhy(4)" class="p-3 rounded-lg bg-gray-800 light:bg-white border border-gray-700 light:border-slate-300 cursor-pointer hover:border-indigo-400 transition flex items-center justify-between">
+                            <span><strong class="text-indigo-400">MENGAPA 4:</strong> Mengapa tidak ada manajemen waktu?</span>
+                            <i id="why-icon-4" class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </div>
+                        <div id="why-ans-4" class="hidden pl-4 pr-2 py-2 text-gray-300 light:text-slate-700 border-l-2 border-indigo-500 bg-gray-900/40 light:bg-slate-50 rounded-r-lg">
+                            Jawaban: Siswa tidak memiliki jadwal harian terstruktur dan belum terbiasa meregulasi diri.
+                        </div>
+
+                        <div onclick="toggleWhy(5)" class="p-3 rounded-lg bg-gray-800 light:bg-white border border-gray-700 light:border-slate-300 cursor-pointer hover:border-indigo-400 transition flex items-center justify-between">
+                            <span><strong class="text-indigo-400">MENGAPA 5:</strong> Mengapa belum terbiasa meregulasi diri?</span>
+                            <i id="why-icon-5" class="fa-solid fa-chevron-down text-gray-400"></i>
+                        </div>
+                        <div id="why-ans-5" class="hidden pl-4 pr-2 py-2 text-gray-300 light:text-slate-700 border-l-2 border-indigo-500 bg-gray-900/40 light:bg-slate-50 rounded-r-lg">
+                            Jawaban: Kurangnya pendampingan penyusunan prioritas belajar dan belum memanfaatkan jadwal digital.
+                        </div>
+
+                        <div class="p-3 rounded-lg bg-emerald-950/40 border border-emerald-500/40 text-emerald-300 font-semibold mt-3">
+                            <strong>AKAR MASALAH:</strong> Perlunya edukasi manajemen waktu & pendampingan pembuatan jadwal belajar harian berbasis prioritas.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fishbone Diagram Visual Representation -->
+                <div class="p-5 rounded-xl bg-gray-900/50 light:bg-slate-50 border border-gray-800 light:border-slate-200 space-y-3">
+                    <h4 class="font-bold text-gray-200 light:text-slate-800 text-sm flex items-center">
+                        <i class="fa-solid fa-fish text-indigo-400 mr-2"></i> Diagram Fishbone (Cause and Effect Diagram)
+                    </h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                        <div class="p-3 rounded-lg bg-gray-900 light:bg-white border border-gray-800 light:border-slate-200">
+                            <span class="font-bold text-indigo-400 block mb-1">Manusia (Man)</span>
+                            <p class="text-gray-400 light:text-slate-600">Kurang motivasi, regulasi diri rendah, pola tidur buruk.</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gray-900 light:bg-white border border-gray-800 light:border-slate-200">
+                            <span class="font-bold text-indigo-400 block mb-1">Metode (Method)</span>
+                            <p class="text-gray-400 light:text-slate-600">Cara belajar tidak terstruktur, tidak ada jadwal SOP harian.</p>
+                        </div>
+                        <div class="p-3 rounded-lg bg-gray-900 light:bg-white border border-gray-800 light:border-slate-200">
+                            <span class="font-bold text-indigo-400 block mb-1">Lingkungan (Environment)</span>
+                            <p class="text-gray-400 light:text-slate-600">Distraksi gawai, kurang pengawasan waktu tidur malam.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBBAB 1.3 -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="flex items-center space-x-3 border-b border-gray-800 light:border-slate-200 pb-4">
+                    <span class="px-3 py-1 rounded-lg bg-purple-500 text-white font-mono font-bold text-sm">1.3</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white light:text-slate-900">Simulasi Penyelesaian Masalah dengan Berpikir Komputasional</h3>
+                </div>
+
+                <p class="text-sm text-gray-300 light:text-slate-700 leading-relaxed">
+                    Simulasi dilakukan untuk menguji efektivitas algoritma solusi sebelum diterapkan secara penuh. Tahapan simulasi penyelesaian masalah meliputi runtutan berikut:
+                </p>
+
+                <!-- Flow Process -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-center text-xs font-semibold">
+                    <div class="p-2.5 rounded-lg bg-gray-900 light:bg-slate-100 border border-purple-500/30 text-purple-300 light:text-purple-700">1. Identifikasi Masalah</div>
+                    <div class="p-2.5 rounded-lg bg-gray-900 light:bg-slate-100 border border-purple-500/30 text-purple-300 light:text-purple-700">2. Dekomposisi</div>
+                    <div class="p-2.5 rounded-lg bg-gray-900 light:bg-slate-100 border border-purple-500/30 text-purple-300 light:text-purple-700">3. Pengenalan Pola</div>
+                    <div class="p-2.5 rounded-lg bg-gray-900 light:bg-slate-100 border border-purple-500/30 text-purple-300 light:text-purple-700">4. Abstraksi</div>
+                    <div class="p-2.5 rounded-lg bg-gray-900 light:bg-slate-100 border border-purple-500/30 text-purple-300 light:text-purple-700">5. Algoritma</div>
+                    <div class="p-2.5 rounded-lg bg-gray-900 light:bg-slate-100 border border-purple-500/30 text-purple-300 light:text-purple-700">6. Simulasi / Uji Solusi</div>
+                    <div class="p-2.5 rounded-lg bg-emerald-950/60 light:bg-emerald-100 border border-emerald-500/40 text-emerald-300 light:text-emerald-800">7. Evaluasi</div>
+                </div>
+
+                <!-- Case Study PDF: Route Simulation -->
+                <div class="p-5 rounded-xl bg-gray-900/60 light:bg-slate-50 border border-gray-800 light:border-slate-200 space-y-4">
+                    <h4 class="font-bold text-purple-400 light:text-purple-700 text-sm flex items-center">
+                        <i class="fa-solid fa-route mr-2"></i> Contoh Studi Kasus PDF: Simulasi Menentukan Rute Tercepat Rumah ke Sekolah
+                    </h4>
+                    <p class="text-xs text-gray-300 light:text-slate-600 leading-relaxed">
+                        Siswa melakukan simulasi penentuan rute terbaik menuju SMAN 1 Kersana berdasarkan variasi waktu keberangkatan, titik kemacetan, serta estimasi waktu tempuh menggunakan bantuan aplikasi peta digital (Google Maps / Waze).
+                    </p>
+
+                    <!-- 3 Format Algoritma -->
+                    <div class="pt-2">
+                        <p class="text-xs font-bold text-gray-300 light:text-slate-700 mb-2">Bentuk/Format Algoritma Solusi (Sesuai PDF):</p>
+                        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                            <div class="p-3 rounded-lg bg-gray-950 light:bg-white border border-gray-800 light:border-slate-200">
+                                <span class="font-bold text-purple-400 block mb-1"><i class="fa-solid fa-file-lines mr-1"></i> 1. Draf SOP Berbasis Teks</span>
+                                <p class="text-gray-400 light:text-slate-600">Instruksi terstruktur berbasis urutan teks rinci langkah demi langkah.</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-gray-950 light:bg-white border border-gray-800 light:border-slate-200">
+                                <span class="font-bold text-purple-400 block mb-1"><i class="fa-solid fa-diagram-project mr-1"></i> 2. Flowchart Visual</span>
+                                <p class="text-gray-400 light:text-slate-600">Bagan alir logika dengan simbol baku (Start, Decision, Process, End).</p>
+                            </div>
+                            <div class="p-3 rounded-lg bg-gray-950 light:bg-white border border-gray-800 light:border-slate-200">
+                                <span class="font-bold text-purple-400 block mb-1"><i class="fa-solid fa-film mr-1"></i> 3. Storyboard</span>
+                                <p class="text-gray-400 light:text-slate-600">Visualisasi urutan tindakan untuk skenario atau video tutorial.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SUBBAB 1.4 -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 space-y-6">
+                <div class="flex items-center space-x-3 border-b border-gray-800 light:border-slate-200 pb-4">
+                    <span class="px-3 py-1 rounded-lg bg-emerald-500 text-white font-mono font-bold text-sm">1.4</span>
+                    <h3 class="text-xl sm:text-2xl font-bold text-white light:text-slate-900">Integrasi Menggunakan Kecerdasan Artifisial dalam Berpikir Komputasional</h3>
+                </div>
+
+                <p class="text-sm text-gray-300 light:text-slate-700 leading-relaxed">
+                    Kecerdasan Artifisial (KA) memperkuat kemampuan Berpikir Komputasional manusia, terutama dalam mempercepat **pengenalan pola data**, analisis data masif, dan otomatisasi simulasi masalah kompleks.
+                </p>
+
+                <!-- Integration Formula Box -->
+                <div class="p-4 rounded-xl bg-gradient-to-r from-sky-950 via-indigo-950 to-emerald-950 border border-emerald-500/40 text-center">
+                    <p class="text-xs font-mono text-emerald-400 font-semibold mb-1">FORMULA INTEGRASI</p>
+                    <p class="text-sm sm:text-base font-extrabold text-white tracking-wide">
+                        MANUSIA + BERPIKIR KOMPUTASIONAL + KECERDASAN ARTIFISIAL = PENYELESAIAN MASALAH LEBIH TERSTRUKTUR & OPTIMAL
+                    </p>
+                </div>
+
+                <!-- Examples from PDF -->
+                <div>
+                    <h4 class="text-sm font-bold text-gray-200 light:text-slate-800 mb-3">Contoh Aplikasi KA yang Mengintegrasikan CT (Sesuai PDF):</h4>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                        <div class="p-4 rounded-xl bg-gray-900/50 light:bg-slate-100 border border-gray-800 light:border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-robot text-2xl text-sky-400"></i>
+                            <div>
+                                <h5 class="font-bold text-white light:text-slate-900 text-sm">Google Assistant</h5>
+                                <p class="text-gray-400 light:text-slate-600 mt-1">Mengenali pola suara manusia dan menjalankan perintah algoritma terstruktur.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-gray-900/50 light:bg-slate-100 border border-gray-800 light:border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-wand-magic-sparkles text-2xl text-purple-400"></i>
+                            <div>
+                                <h5 class="font-bold text-white light:text-slate-900 text-sm">Filter Instagram</h5>
+                                <p class="text-gray-400 light:text-slate-600 mt-1">Menggunakan Computer Vision & abstraksi pola wajah secara real-time.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 rounded-xl bg-gray-900/50 light:bg-slate-100 border border-gray-800 light:border-slate-200 flex items-start space-x-3">
+                            <i class="fa-solid fa-cart-shopping text-2xl text-emerald-400"></i>
+                            <div>
+                                <h5 class="font-bold text-white light:text-slate-900 text-sm">Rekomendasi E-Commerce</h5>
+                                <p class="text-gray-400 light:text-slate-600 mt-1">Menganalisis tren kebiasaan belanja pengguna untuk memprediksi rekomendasi produk.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECTION ETIKA DAN INTEGRITAS DATA -->
+            <div class="glass-card rounded-2xl p-6 sm:p-8 border border-amber-500/30 space-y-4">
+                <div class="flex items-center space-x-3 border-b border-gray-800 light:border-slate-200 pb-3">
+                    <i class="fa-solid fa-shield-halved text-2xl text-amber-400"></i>
+                    <h3 class="text-xl font-bold text-white light:text-slate-900">ETIKA DAN INTEGRITAS DATA</h3>
+                </div>
+
+                <p class="text-xs sm:text-sm text-gray-300 light:text-slate-700 leading-relaxed">
+                    Sesuai panduan pembelajaran pada PDF Bab 1, setiap aktivitas analisis masalah dan penggunaan teknologi Kecerdasan Artifisial wajib mematuhi prinsip etika berikut:
+                </p>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+                    <div class="p-3 rounded-lg bg-gray-900/80 light:bg-slate-100 border border-gray-800 light:border-slate-200">
+                        <strong class="text-amber-400 block mb-1"><i class="fa-solid fa-user-lock mr-1"></i> Kerahasiaan Data</strong>
+                        <span class="text-gray-400 light:text-slate-600">Menjaga privasi data pribadi dan menerapkan anonimisasi data responden.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-gray-900/80 light:bg-slate-100 border border-gray-800 light:border-slate-200">
+                        <strong class="text-amber-400 block mb-1"><i class="fa-solid fa-check-double mr-1"></i> Data & Fakta Valid</strong>
+                        <span class="text-gray-400 light:text-slate-600">Hanya menggunakan sumber data terverifikasi dan mencantumkan sumber rujukan.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-gray-900/80 light:bg-slate-100 border border-gray-800 light:border-slate-200">
+                        <strong class="text-amber-400 block mb-1"><i class="fa-solid fa-scale-balanced mr-1"></i> Bebas Bias & Nondiskriminasi</strong>
+                        <span class="text-gray-400 light:text-slate-600">Solusi tidak boleh diskriminatif, merugikan pihak lain, atau melanggar norma sosial.</span>
+                    </div>
+                    <div class="p-3 rounded-lg bg-gray-900/80 light:bg-slate-100 border border-gray-800 light:border-slate-200">
+                        <strong class="text-amber-400 block mb-1"><i class="fa-solid fa-handshake-simple mr-1"></i> Tanggung Jawab</strong>
+                        <span class="text-gray-400 light:text-slate-600">Objektivitas dan kejujuran intelektual atas seluruh hasil analisis yang diusulkan.</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ==================== 3. PAGE: TUGAS AKHIR X-3 ==================== -->
+        <section id="page-x3" class="page-section hidden space-y-8">
+            
+            <!-- Page Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-800 light:border-slate-200 pb-6">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-mono font-semibold">DAFTAR MURID X-3</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white light:text-slate-900 tracking-tight mt-1">CURRICULUM VITAE MURID X-3</h2>
+                    <p class="text-xs sm:text-sm text-gray-400 light:text-slate-600">Tugas Akhir Bab 1 – Berpikir Komputasional | SMAN 1 Kersana</p>
+                </div>
+
+                <!-- Search Input Filter -->
+                <div class="relative w-full sm:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
+                    <input type="text" id="search-x3" onkeyup="filterStudents('x3')" placeholder="Cari nama murid X-3..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-gray-900 light:bg-white border border-gray-700 light:border-slate-300 text-xs text-white light:text-slate-800 focus:outline-none focus:border-indigo-500">
+                </div>
+            </div>
+
+            <!-- Student Grid (Desktop: 6, Tablet: 4, Mobile: 2) -->
+            <div id="grid-x3" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                <!-- Injected via JavaScript -->
+            </div>
+
+        </section>
+
+        <!-- ==================== 4. PAGE: TUGAS AKHIR X-4 ==================== -->
+        <section id="page-x4" class="page-section hidden space-y-8">
+            
+            <!-- Page Header -->
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-gray-800 light:border-slate-200 pb-6">
+                <div>
+                    <span class="px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xs font-mono font-semibold">DAFTAR MURID X-4</span>
+                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white light:text-slate-900 tracking-tight mt-1">CURRICULUM VITAE MURID X-4</h2>
+                    <p class="text-xs sm:text-sm text-gray-400 light:text-slate-600">Tugas Akhir Bab 1 – Berpikir Komputasional | SMAN 1 Kersana</p>
+                </div>
+
+                <!-- Search Input Filter -->
+                <div class="relative w-full sm:w-64">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-xs"></i>
+                    <input type="text" id="search-x4" onkeyup="filterStudents('x4')" placeholder="Cari nama murid X-4..." class="w-full pl-9 pr-4 py-2 rounded-xl bg-gray-900 light:bg-white border border-gray-700 light:border-slate-300 text-xs text-white light:text-slate-800 focus:outline-none focus:border-purple-500">
+                </div>
+            </div>
+
+            <!-- Student Grid (Desktop: 6, Tablet: 4, Mobile: 2) -->
+            <div id="grid-x4" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                <!-- Injected via JavaScript -->
+            </div>
+
+        </section>
+
+        <!-- ==================== 5. PAGE: PROFIL GURU ==================== -->
+        <section id="page-guru" class="page-section hidden max-w-4xl mx-auto space-y-8">
+            
+            <div class="text-center space-y-2">
+                <span class="px-3 py-1 rounded-full bg-sky-500/10 text-sky-400 border border-sky-500/20 text-xs font-mono font-semibold">IDENTITAS PENDIDIK</span>
+                <h2 class="text-3xl font-extrabold text-white light:text-slate-900">PROFIL GURU PENGAMPU</h2>
+            </div>
+
+            <!-- Profile Card -->
+            <div class="glass-card rounded-3xl p-8 sm:p-10 border border-sky-500/30 shadow-2xl relative overflow-hidden">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    
+                    <!-- Teacher Photo Frame -->
+                    <div class="relative group">
+                        <div class="w-48 h-48 sm:w-56 sm:h-56 rounded-2xl overflow-hidden border-4 border-sky-500/40 shadow-xl bg-gray-900">
+                            <!-- FOTO GURU BISA DIGANTI DI VARIABEL JS teacherConfig.photoUrl -->
+                            <img id="teacher-photo" src="https://placehold.co/400x400?text=FOTO+GURU" alt="M. Faisal Abduh, M.Pd." class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+                        </div>
+                        <div class="absolute -bottom-3 -right-3 w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center text-lg shadow-lg">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                    </div>
+
+                    <!-- Teacher Details -->
+                    <div class="flex-1 text-center md:text-left space-y-4">
+                        <div>
+                            <h3 class="text-2xl sm:text-3xl font-bold text-white light:text-slate-900">M. FAISAL ABDUH, M.Pd.</h3>
+                            <p class="text-sky-400 font-mono text-sm font-semibold mt-1">NIP: 199104032020121014</p>
+                        </div>
+
+                        <div class="space-y-2 text-sm text-gray-300 light:text-slate-700">
+                            <p class="flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-chalkboard-user w-6 text-sky-400"></i>
+                                <span>Guru Pengampu: <strong>Koding dan Kecerdasan Artifisial</strong></span>
+                            </p>
+                            <p class="flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-school w-6 text-sky-400"></i>
+                                <span>Satuan Pendidikan: <strong>SMA NEGERI 1 KERSANA</strong></span>
+                            </p>
+                            <p class="flex items-center justify-center md:justify-start">
+                                <i class="fa-solid fa-location-dot w-6 text-sky-400"></i>
+                                <span>Kabupaten Brebes, Jawa Tengah</span>
+                            </p>
+                        </div>
+
+                        <!-- Button to External Teacher CV -->
+                        <div class="pt-2">
+                            <a href="https://gurufa119.github.io/cv" target="_blank" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-gradient-to-r from-sky-500 to-indigo-600 text-white font-bold text-sm shadow-lg shadow-sky-500/25 hover:shadow-sky-500/40 hover:scale-105 transition-all">
+                                <span>LIHAT CV GURU</span>
+                                <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#070A12] light:bg-slate-900 border-t border-gray-800 light:border-slate-800 py-8 text-center text-xs text-gray-400 light:text-slate-400 transition-colors">
+        <div class="max-w-7xl mx-auto px-4 space-y-2">
+            <p class="font-bold text-gray-200 light:text-slate-200 text-sm">
+                REKAP TUGAS AKHIR BAB 1 BERPIKIR KOMPUTASIONAL
+            </p>
+            <p>
+                Koding dan Kecerdasan Artifisial | SMA Negeri 1 Kersana
+            </p>
+            <p class="text-sky-400 font-medium">
+                Guru Pengampu: M. Faisal Abduh, M.Pd.
+            </p>
+            <p class="pt-4 text-gray-500 text-[11px]">
+                © 2026 SMA Negeri 1 Kersana. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- FLOATING BACK TO TOP BUTTON (Bottom Left Positioned) -->
+    <button id="back-to-top" onclick="scrollToTop()" class="fixed bottom-6 left-6 z-50 p-3.5 rounded-2xl bg-sky-500 text-white shadow-xl shadow-sky-500/30 hover:bg-sky-400 hover:scale-110 transition-all duration-300 opacity-0 pointer-events-none" title="Kembali ke atas">
+        <i class="fa-solid fa-arrow-up text-base"></i>
+    </button>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        
+        // ====================================================================
+        // DATA SISWA KELAS X-3 (36 MURID)
+        // SILAKAN GANTI 'photoUrl' DAN 'cvUrl' DENGAN TAUTAN URL ANDA SENDIRI
+        // ====================================================================
+        const studentsX3 = [
+            { name: "AIDZIL LUTFI AFFANDY", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "AKMAL SAHIDIL FURKON", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ALIFIA ZASKIA FITRI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ALZENNA CETTA FIDELYA AHMAD", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "CAHYANI DWI MARTALITA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "CEMPAKA PUTRI LAKASANA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "CIKA FITRIYANI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "CITRA ASIFA JENI AULIA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "DEMAS RAIKHAN NURRATMAN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "DINDA FERNT FELIX FAUZIAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "DISKA DWI ASYIFA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "EVA TAMALA AGUSTIN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "FAVI RAHMATIN NADIFA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "FIONA ADINDA MELISA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "FRINZA AYATUL HUSNA ALNADIR", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "GENDIS ZULFA RAHMADHANI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "GRASIELA GUITNI ALEXSANDRA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "HANA KHUZIAMAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "HENDRI MARHAENUDIN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "JELITA RACHELLIA RAMADANI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "KHILDA QURROTUL AINI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "M. SAIFUL BUKHORI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "MELIA SRI JANETA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "MUHAMAD RIZQI AMRULLAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "MUHAMAD SHALAHUDIN ALIY", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "NAJIIBAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "NAJLA AQILATUNNISA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "NUR AMELIA RAHMADHANI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "NUR KOMALAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "RASYA DWI PURWANTO", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "REFLY EKA SUTRIYONO", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ROHADATU RIFANA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "SELLY RISNI NAYLA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "SYAEFUDIN FATURROHMAN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "SYLJIAN SALMA RHAMADHANY", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "WIDIA NINGSIH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" }
+        ];
+
+        // ====================================================================
+        // DATA SISWA KELAS X-4 (36 MURID)
+        // SILAKAN GANTI 'photoUrl' DAN 'cvUrl' DENGAN TAUTAN URL ANDA SENDIRI
+        // ====================================================================
+        const studentsX4 = [
+            { name: "ADAM RIFA GALANG PERMANA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "AHMAD FAOZAN MUBAROK", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "AHMAD SHANDIKA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ALESIYA SASMARA META", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ALFIYAH LAELATUN NIMAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ANA ISTIANAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ANAHATA CAHYA ALIFIA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ANGELITA RAMADANI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ARIZA NISA RAMADHANI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "AULIYATUN NISA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "BARA AZIMI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "DAVA ELGA AIDITYA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "DEFFANY NEVA AULYA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "DIAN MUTIARA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "EGI PRASETYO", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ELIA DWI PUTRI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "HAEZA YULIANTI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "INDYGO", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "KAYLA KANZA AZZAHRA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "KRISTIAN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "KURNIAWAN NUR SYIFA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "LULU AZKIYATUL HUSNA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "M. NUR RIZQI ADITYA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "MUHAMAD RIZA PANGESTU", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "NAJWA SAFIRATUL IHSAN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "NUR BAETI KHASANAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "OMAY QOMARIYAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "RADITHYA GALIH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "RAYANA DWI KHARISMAWAN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "REGINA AULIA PUTRI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "REVAN ALFA RIZKI RAMADHAN", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "SITI NUR AZIZAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "SULIS KAYYISATUL FAIZAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "TIFANKA ANANDA PUTRI", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ULFIYANTI NURHANIFAH", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" },
+            { name: "ZALFA AULIA", photoUrl: "https://placehold.co/200x200?text=FOTO", cvUrl: "#" }
+        ];
+
+
+        // 1. Navigation Controller
+        function navigateTo(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.add('hidden'));
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+
+            // Update Nav States
+            const navButtons = document.querySelectorAll('.nav-link');
+            navButtons.forEach(btn => {
+                btn.classList.remove('text-sky-400', 'bg-sky-500/10');
+                btn.classList.add('text-gray-300', 'light:text-slate-600');
+            });
+
+            const activeNav = document.getElementById(`nav-${pageId}`);
+            if (activeNav) {
+                activeNav.classList.add('text-sky-400', 'bg-sky-500/10');
+                activeNav.classList.remove('text-gray-300', 'light:text-slate-600');
+            }
+        }
+
+        // 2. Render Student Cards Generator
+        function renderStudents(list, containerId, borderHoverColor) {
+            const container = document.getElementById(containerId);
+            if (!container) return;
+
+            container.innerHTML = list.map((s, index) => `
+                <a href="${s.cvUrl && s.cvUrl !== '#' ? s.cvUrl : 'javascript:void(0)'}" 
+                   target="${s.cvUrl && s.cvUrl !== '#' ? '_blank' : '_self'}" 
+                   onclick="${s.cvUrl === '#' ? 'alertNoCV(\'' + s.name + '\')' : ''}"
+                   class="group glass-card p-4 rounded-2xl text-center border border-gray-800 light:border-slate-200 hover:${borderHoverColor} hover:shadow-lg transition-all duration-300 flex flex-col items-center justify-between">
+                    
+                    <div class="w-full space-y-3">
+                        <!-- Round Photo -->
+                        <div class="w-20 h-20 sm:w-24 sm:h-24 mx-auto rounded-full overflow-hidden border-2 border-gray-700 light:border-slate-300 group-hover:border-sky-400 group-hover:scale-105 transition-all shadow-md">
+                            <img src="${s.photoUrl}" alt="${s.name}" class="w-full h-full object-cover" onerror="this.src='https://placehold.co/200x200?text=FOTO'">
+                        </div>
+                        
+                        <!-- Student Name -->
+                        <h4 class="text-xs sm:text-sm font-bold text-white light:text-slate-800 group-hover:text-sky-400 transition-colors line-clamp-2 leading-tight">
+                            ${s.name}
+                        </h4>
+                    </div>
+
+                    <div class="mt-3 pt-2 border-t border-gray-800/60 light:border-slate-200/60 w-full text-[10px] text-gray-400 group-hover:text-sky-400 flex items-center justify-center font-mono">
+                        <span>Lihat CV</span> <i class="fa-solid fa-arrow-up-right-from-square ml-1 text-[8px]"></i>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function alertNoCV(studentName) {
+            const modal = document.createElement('div');
+            modal.className = "fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4";
+            modal.innerHTML = `
+                <div class="bg-gray-900 border border-gray-700 rounded-2xl p-6 max-w-sm w-full text-center space-y-4">
+                    <div class="w-12 h-12 rounded-full bg-amber-500/20 text-amber-400 flex items-center justify-center mx-auto text-xl">
+                        <i class="fa-solid fa-info"></i>
+                    </div>
+                    <h3 class="font-bold text-white text-base">Tautan CV Belum Diisi</h3>
+                    <p class="text-xs text-gray-300">URL CV untuk <strong>${studentName}</strong> masih menggunakan placeholder '#'.</p>
+                    <button onclick="this.parentElement.parentElement.remove()" class="px-5 py-2 rounded-xl bg-sky-500 text-white font-bold text-xs hover:bg-sky-400">
+                        Mengerti
+                    </button>
+                </div>
+            `;
+            document.body.appendChild(modal);
+        }
+
+        // 3. Search Filter Function
+        function filterStudents(classKey) {
+            const query = document.getElementById(`search-${classKey}`).value.toLowerCase();
+            const sourceList = classKey === 'x3' ? studentsX3 : studentsX4;
+            const filtered = sourceList.filter(s => s.name.toLowerCase().includes(query));
+            renderStudents(filtered, `grid-${classKey}`, classKey === 'x3' ? 'border-indigo-500/50' : 'border-purple-500/50');
+        }
+
+        // 4. Interactive 5 Whys Simulation Handler
+        function toggleWhy(step) {
+            const ans = document.getElementById(`why-ans-${step}`);
+            const icon = document.getElementById(`why-icon-${step}`);
+            if (ans) {
+                if (ans.classList.contains('hidden')) {
+                    ans.classList.remove('hidden');
+                    if (icon) icon.className = "fa-solid fa-chevron-up text-indigo-400";
+                } else {
+                    ans.classList.add('hidden');
+                    if (icon) icon.className = "fa-solid fa-chevron-down text-gray-400";
+                }
+            }
+        }
+
+        // 5. Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark text-xl";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars text-xl";
+            }
+        }
+
+        // 6. Theme Switcher (Dark / Light Mode)
+        function initTheme() {
+            const savedTheme = localStorage.getItem('theme') || 'dark';
+            if (savedTheme === 'light') {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                document.getElementById('theme-icon').className = "fa-solid fa-moon text-base";
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                document.getElementById('theme-icon').className = "fa-solid fa-sun text-base";
+            }
+        }
+
+        function toggleTheme() {
+            if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                localStorage.setItem('theme', 'light');
+                document.getElementById('theme-icon').className = "fa-solid fa-moon text-base";
+            } else {
+                document.documentElement.classList.add('dark');
+                document.documentElement.classList.remove('light');
+                localStorage.setItem('theme', 'dark');
+                document.getElementById('theme-icon').className = "fa-solid fa-sun text-base";
+            }
+        }
+
+        // 7. Fullscreen Toggle API
+        function toggleFullscreen() {
+            const icon = document.getElementById('fullscreen-icon');
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    console.log(`Error entering fullscreen: ${err.message}`);
+                });
+                if (icon) icon.className = "fa-solid fa-compress text-base";
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                    if (icon) icon.className = "fa-solid fa-expand text-base";
+                }
+            }
+        }
+
+        // 8. Scroll to Top Floating Button Handler
+        window.addEventListener('scroll', () => {
+            const backToTopBtn = document.getElementById('back-to-top');
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.add('opacity-100');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none');
+                backToTopBtn.classList.remove('opacity-100');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Window Load Initializations
+        window.onload = function() {
+            initTheme();
+            renderStudents(studentsX3, 'grid-x3', 'border-indigo-500/50');
+            renderStudents(studentsX4, 'grid-x4', 'border-purple-500/50');
+            navigateTo('home');
+        };
+    </script>
+</body>
+</html>

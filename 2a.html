@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="id" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Tugas Akhir Bab 1 Berpikir Komputasional - SMAN 1 Kersana</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cyber: {
+                            dark: '#0B0F19',
+                            card: '#111827',
+                            lightCard: '#FFFFFF',
+                            cyan: '#00F0FF',
+                            purple: '#7000FF',
+                            mint: '#00FFAB',
+                            pink: '#FF007F'
+                        }
+                    },
+                    fontFamily: {
+                        poppins: ['Poppins', 'sans-serif'],
+                        code: ['Fira Code', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts: Poppins & Fira Code -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Custom CSS Variables and Glassmorphism Styles -->
+    <style>
+        :root {
+            --bg-primary: #0B0F19;
+            --bg-secondary: #111827;
+            --bg-card: rgba(17, 24, 39, 0.75);
+            --text-main: #F3F4F6;
+            --text-muted: #9CA3AF;
+            --border-color: rgba(0, 240, 255, 0.2);
+            --accent-glow: rgba(0, 240, 255, 0.3);
+            --glass-bg: rgba(17, 24, 39, 0.65);
+        }
+
+        .light {
+            --bg-primary: #F0F4F8;
+            --bg-secondary: #FFFFFF;
+            --bg-card: rgba(255, 255, 255, 0.85);
+            --text-main: #1F2937;
+            --text-muted: #4B5563;
+            --border-color: rgba(112, 0, 255, 0.2);
+            --accent-glow: rgba(112, 0, 255, 0.2);
+            --glass-bg: rgba(255, 255, 255, 0.75);
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Poppins', sans-serif;
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+        }
+
+        .font-code {
+            font-family: 'Fira Code', monospace;
+        }
+
+        /* Glassmorphism Effect */
+        .glass-panel {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+        }
+
+        /* Neon Glow Effects */
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+        }
+        .glow-purple {
+            box-shadow: 0 0 20px rgba(112, 0, 255, 0.25);
+        }
+        .glow-mint {
+            box-shadow: 0 0 20px rgba(0, 255, 171, 0.25);
+        }
+
+        /* Hover animations for cards */
+        .cyber-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .cyber-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px var(--accent-glow);
+            border-color: rgba(0, 240, 255, 0.6);
+        }
+
+        /* Flip Card Effect */
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+        }
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner, .flip-card.flipped .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 1rem;
+        }
+        .flip-card-back {
+            transform: rotateY(180deg);
+        }
+
+        /* Floating Scroll to Top button at bottom left */
+        #scrollTopBtn {
+            position: fixed;
+            bottom: 24px;
+            left: 24px;
+            z-index: 99;
+            transition: all 0.3s ease;
+            transform: scale(0);
+            opacity: 0;
+        }
+        #scrollTopBtn.visible {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        /* Grid Background Pattern */
+        .bg-cyber-grid {
+            background-image: linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-primary);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #00F0FF;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #7000FF;
+        }
+    </style>
+</head>
+<body class="bg-cyber-grid min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-black">
+
+    <!-- NAVIGATION BAR (STICKY TOP) -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-cyan-500/20 px-4 lg:px-8 py-3 transition-colors">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <!-- Brand Logo / Title -->
+            <a href="#" onclick="switchPage('home')" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 via-purple-600 to-emerald-400 p-[2px] flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <div class="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
+                        <i class="fa-solid fa-brain text-cyan-400 text-lg"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-code font-bold text-sm sm:text-base bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent">
+                        KAI - SMAN 1 KERSANA
+                    </h1>
+                    <p class="text-[10px] text-gray-400 font-mono tracking-tight">// BERPIKIR KOMPUTASIONAL</p>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Menu -->
+            <nav class="hidden md:flex items-center gap-1 lg:gap-2 text-xs lg:text-sm font-medium">
+                <button onclick="switchPage('home')" id="nav-home" class="nav-btn px-3 py-2 rounded-lg transition-all flex items-center gap-2 hover:bg-cyan-500/10 hover:text-cyan-400">
+                    <i class="fa-solid fa-house"></i> HOME
+                </button>
+                <button onclick="switchPage('materi')" id="nav-materi" class="nav-btn px-3 py-2 rounded-lg transition-all flex items-center gap-2 hover:bg-cyan-500/10 hover:text-cyan-400">
+                    <i class="fa-solid fa-book-bookmark"></i> MATERI
+                </button>
+                <button onclick="switchPage('x3')" id="nav-x3" class="nav-btn px-3 py-2 rounded-lg transition-all flex items-center gap-2 hover:bg-cyan-500/10 hover:text-cyan-400">
+                    <i class="fa-solid fa-laptop-code"></i> TUGAS AKHIR X-3
+                </button>
+                <button onclick="switchPage('x4')" id="nav-x4" class="nav-btn px-3 py-2 rounded-lg transition-all flex items-center gap-2 hover:bg-cyan-500/10 hover:text-cyan-400">
+                    <i class="fa-solid fa-laptop-code"></i> TUGAS AKHIR X-4
+                </button>
+                <button onclick="switchPage('guru')" id="nav-guru" class="nav-btn px-3 py-2 rounded-lg transition-all flex items-center gap-2 hover:bg-cyan-500/10 hover:text-cyan-400">
+                    <i class="fa-solid fa-user-tie"></i> PROFIL GURU
+                </button>
+            </nav>
+
+            <!-- Action Controls (Fullscreen & Dark/Light Toggle) -->
+            <div class="flex items-center gap-2">
+                <!-- Fullscreen Button -->
+                <button id="fullscreenBtn" onclick="toggleFullscreen()" title="Layar Penuh" class="p-2.5 rounded-xl border border-cyan-500/30 hover:bg-cyan-500/20 text-cyan-400 transition-all active:scale-95">
+                    <i id="fullscreenIcon" class="fa-solid fa-expand"></i>
+                </button>
+
+                <!-- Theme Switcher Button -->
+                <button id="themeToggleBtn" onclick="toggleTheme()" title="Ubah Mode Tampilan" class="p-2.5 rounded-xl border border-purple-500/30 hover:bg-purple-500/20 text-purple-400 transition-all active:scale-95">
+                    <i id="themeIcon" class="fa-solid fa-moon"></i>
+                </button>
+
+                <!-- Mobile Hamburger Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl border border-emerald-500/30 text-emerald-400 hover:bg-emerald-500/20">
+                    <i class="fa-solid fa-bars text-lg"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobileMenu" class="hidden md:hidden mt-3 pt-3 border-t border-cyan-500/20 flex flex-col gap-2">
+            <button onclick="switchPage('home'); toggleMobileMenu()" class="px-4 py-2.5 rounded-lg text-left text-sm font-medium hover:bg-cyan-500/10 flex items-center gap-3">
+                <i class="fa-solid fa-house text-cyan-400"></i> HOME
+            </button>
+            <button onclick="switchPage('materi'); toggleMobileMenu()" class="px-4 py-2.5 rounded-lg text-left text-sm font-medium hover:bg-cyan-500/10 flex items-center gap-3">
+                <i class="fa-solid fa-book-bookmark text-cyan-400"></i> MATERI BAB 1
+            </button>
+            <button onclick="switchPage('x3'); toggleMobileMenu()" class="px-4 py-2.5 rounded-lg text-left text-sm font-medium hover:bg-cyan-500/10 flex items-center gap-3">
+                <i class="fa-solid fa-laptop-code text-cyan-400"></i> TUGAS AKHIR X-3
+            </button>
+            <button onclick="switchPage('x4'); toggleMobileMenu()" class="px-4 py-2.5 rounded-lg text-left text-sm font-medium hover:bg-cyan-500/10 flex items-center gap-3">
+                <i class="fa-solid fa-laptop-code text-cyan-400"></i> TUGAS AKHIR X-4
+            </button>
+            <button onclick="switchPage('guru'); toggleMobileMenu()" class="px-4 py-2.5 rounded-lg text-left text-sm font-medium hover:bg-cyan-500/10 flex items-center gap-3">
+                <i class="fa-solid fa-user-tie text-cyan-400"></i> PROFIL GURU
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= PAGE 1: HOME ================= -->
+        <section id="page-home" class="page-section space-y-12">
+            <!-- Hero Banner -->
+            <div class="relative overflow-hidden rounded-3xl glass-panel p-8 sm:p-12 border border-cyan-500/30 text-center space-y-6">
+                <!-- Binary Rain Canvas Effect Background -->
+                <canvas id="binaryCanvas" class="absolute inset-0 opacity-15 pointer-events-none w-full h-full"></canvas>
+                
+                <div class="relative z-10 space-y-4 max-w-4xl mx-auto">
+                    <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 text-xs font-code font-semibold tracking-wide">
+                        <i class="fa-solid fa-microchip animate-pulse"></i> SEMESTER 1 - TAHUN AJARAN 2025/2026
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight font-code bg-gradient-to-r from-cyan-400 via-purple-400 to-emerald-400 bg-clip-text text-transparent leading-tight">
+                        REKAP TUGAS AKHIR BAB 1<br>BERPIKIR KOMPUTASIONAL
+                    </h1>
+                    
+                    <p class="text-base sm:text-lg text-gray-300 font-medium">
+                        Mata Pelajaran <span class="text-cyan-400 font-semibold">Koding dan Kecerdasan Artifisial</span> — Kelas X-3 & X-4
+                    </p>
+                    
+                    <div class="pt-2 text-sm text-gray-400 font-mono flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-school text-emerald-400"></i>
+                        <span class="font-semibold text-gray-200">SMA NEGERI 1 KERSANA</span>
+                    </div>
+
+                    <div class="text-xs sm:text-sm font-code text-purple-300">
+                        Guru Pengampu: <span class="font-bold underline decoration-purple-500">M. FAISAL ABDUH, M.Pd.</span>
+                    </div>
+
+                    <!-- Typewriter Text Effect -->
+                    <div class="pt-4">
+                        <div class="inline-block glass-panel px-6 py-3 rounded-2xl border border-cyan-500/40 font-code text-xs sm:text-sm text-cyan-300 shadow-lg">
+                            <span id="typewriterText"></span><span class="animate-ping font-bold text-cyan-400">|</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3 Main Action Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card 1: Materi -->
+                <div onclick="switchPage('materi')" class="cyber-card glass-panel rounded-2xl p-6 border border-cyan-500/30 cursor-pointer group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-brain text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-code group-hover:text-cyan-400 transition-colors flex items-center justify-between">
+                            MATERI BAB 1
+                            <i class="fa-solid fa-arrow-right text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Pelajari ringkasan konsep Berpikir Komputasional, Analisis Masalah, hingga Integrasi Kecerdasan Artifisial.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center text-xs font-code text-cyan-400">
+                        <i class="fa-solid fa-book-open mr-2"></i> Buka Rangkuman Modul
+                    </div>
+                </div>
+
+                <!-- Card 2: Tugas X-3 -->
+                <div onclick="switchPage('x3')" class="cyber-card glass-panel rounded-2xl p-6 border border-purple-500/30 cursor-pointer group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-purple-500/10 border border-purple-500/40 flex items-center justify-center text-purple-400 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-graduation-cap text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-code group-hover:text-purple-400 transition-colors flex items-center justify-between">
+                            TUGAS AKHIR X-3
+                            <i class="fa-solid fa-arrow-right text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Eksplorasi direktori Curriculum Vitae digital karya 36 siswa kelas X-3 SMAN 1 Kersana.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center text-xs font-code text-purple-400">
+                        <i class="fa-solid fa-users mr-2"></i> lihat 36 Portofolio CV
+                    </div>
+                </div>
+
+                <!-- Card 3: Tugas X-4 -->
+                <div onclick="switchPage('x4')" class="cyber-card glass-panel rounded-2xl p-6 border border-emerald-500/30 cursor-pointer group flex flex-col justify-between">
+                    <div class="space-y-4">
+                        <div class="w-14 h-14 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-laptop-code text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold font-code group-hover:text-emerald-400 transition-colors flex items-center justify-between">
+                            TUGAS AKHIR X-4
+                            <i class="fa-solid fa-arrow-right text-sm opacity-0 group-hover:opacity-100 transition-opacity"></i>
+                        </h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Jelajahi galeri Curriculum Vitae digital dan karya analitis siswa kelas X-4 SMAN 1 Kersana.
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-gray-700/50 flex items-center text-xs font-code text-emerald-400">
+                        <i class="fa-solid fa-users mr-2"></i> lihat 36 Portofolio CV
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 2: MATERI ================= -->
+        <section id="page-materi" class="page-section hidden space-y-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-gray-700/60 pb-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-code text-cyan-400 flex items-center gap-3">
+                        <i class="fa-solid fa-book-bookmark"></i> MATERI BAB 1: BERPIKIR KOMPUTASIONAL
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">
+                        Panduan Guru & Siswa Koding dan Kecerdasan Artifisial SMA Kelas X (Kemendikdasmen 2025)
+                    </p>
+                </div>
+
+                <!-- Sub-chapter Tabs Switcher -->
+                <div class="flex flex-wrap gap-2 glass-panel p-1.5 rounded-2xl border border-cyan-500/30 text-xs font-code">
+                    <button onclick="switchMateriTab('tab1')" id="materi-tab1" class="materi-tab-btn px-4 py-2 rounded-xl transition-all font-semibold bg-cyan-500 text-black">
+                        1.1 PENERAPAN BK
+                    </button>
+                    <button onclick="switchMateriTab('tab2')" id="materi-tab2" class="materi-tab-btn px-4 py-2 rounded-xl transition-all text-gray-300 hover:text-white">
+                        1.2 ANALISIS MASALAH
+                    </button>
+                    <button onclick="switchMateriTab('tab3')" id="materi-tab3" class="materi-tab-btn px-4 py-2 rounded-xl transition-all text-gray-300 hover:text-white">
+                        1.3 SIMULASI & KA
+                    </button>
+                </div>
+            </div>
+
+            <!-- Goal Box / Objectives -->
+            <div class="glass-panel p-6 rounded-2xl border-l-4 border-l-cyan-400 space-y-3">
+                <h3 class="text-sm font-code font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-2">
+                    <i class="fa-solid fa-bullseye"></i> Pengantar & Tujuan Pembelajaran
+                </h3>
+                <p class="text-sm text-gray-300 leading-relaxed">
+                    Bab ini mengajak peserta didik menerapkan penyelesaian masalah kompleks dalam kehidupan sehari-hari dengan pendekatan berpikir komputasional. Setelah mempelajari bab ini peserta didik mampu:
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2 text-xs">
+                    <div class="bg-cyan-500/10 p-3 rounded-xl border border-cyan-500/20 text-gray-200">
+                        <strong class="text-cyan-400 block mb-1">(a) Konsep BK</strong> Menjelaskan konsep berpikir komputasional untuk masalah kompleks sehari-hari.
+                    </div>
+                    <div class="bg-purple-500/10 p-3 rounded-xl border border-purple-500/20 text-gray-200">
+                        <strong class="text-purple-400 block mb-1">(b) Analisis Masalah</strong> Menjelaskan analisis masalah secara terstruktur & kritis.
+                    </div>
+                    <div class="bg-emerald-500/10 p-3 rounded-xl border border-emerald-500/20 text-gray-200">
+                        <strong class="text-emerald-400 block mb-1">(c) Simulasi Solusi</strong> Menyimulasikan penyelesaian masalah dengan langkah algoritma.
+                    </div>
+                    <div class="bg-pink-500/10 p-3 rounded-xl border border-pink-500/20 text-gray-200">
+                        <strong class="text-pink-400 block mb-1">(d) Integrasi KA</strong> Mengintegrasikan konsep BK dengan Kecerdasan Artifisial (AI).
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERI TAB 1: PENERAPAN BK -->
+            <div id="materi-content-tab1" class="materi-content-block space-y-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold font-code text-cyan-300">
+                        Sub Bab 1.1: Penerapan Berpikir Komputasional dalam Pemecahan Masalah Sehari-hari
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-cyan-400 flex items-center gap-2">
+                                <i class="fa-solid fa-triangle-exclamation"></i> Masalah Kompleks
+                            </h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">
+                                Masalah kompleks adalah masalah yang memiliki banyak faktor, saling terkait, dan tidak memiliki jawaban tunggal yang sederhana.
+                            </p>
+                            <div class="text-xs text-gray-400 bg-black/20 p-3 rounded-xl">
+                                <strong>Contoh Nyata:</strong> Kemacetan lalu lintas jam berangkat sekolah, manajemen pemilahan sampah kota, dan antrean panjang di kantin sekolah.
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-purple-400 flex items-center gap-2">
+                                <i class="fa-solid fa-code"></i> Berpikir Komputasional (BK)
+                            </h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">
+                                Pendekatan berpikir kritis, sistematis, dan terstruktur seperti ilmuwan komputer untuk menganalisis masalah, memecahnya menjadi bagian kecil, dan menyusun langkah strategis agar solusi efisien, efektif, optimal, serta dapat dijalankan oleh manusia maupun mesin.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 4 Pillars Interactive Flip Cards -->
+                <div class="space-y-4">
+                    <h4 class="text-lg font-bold font-code text-cyan-400 flex items-center gap-2">
+                        <i class="fa-solid fa-cubes"></i> 4 Pilar (Cornerstone) Berpikir Komputasional
+                        <span class="text-xs font-normal text-gray-400">(Sorot / klik kartu untuk membalik)</span>
+                    </h4>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Pilar 1: Dekomposisi -->
+                        <div class="flip-card h-64">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-panel border border-cyan-500/40 p-6 flex flex-col justify-between items-center text-center">
+                                    <div class="w-16 h-16 rounded-2xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center text-3xl">
+                                        <i class="fa-solid fa-sitemap"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold font-code text-cyan-300 text-lg">1. DEKOMPOSISI</h5>
+                                        <p class="text-xs text-gray-400 mt-2">Memecah masalah besar menjadi bagian-bagian kecil.</p>
+                                    </div>
+                                    <span class="text-[10px] font-code text-cyan-400">Putar Kartu <i class="fa-solid fa-rotate"></i></span>
+                                </div>
+                                <div class="flip-card-back glass-panel bg-cyan-950/90 border border-cyan-400 p-6 flex flex-col justify-center text-center space-y-2">
+                                    <h5 class="font-bold text-cyan-300 font-code">Detail Dekomposisi</h5>
+                                    <p class="text-xs text-gray-200">Membagi masalah besar menjadi unit-unit kecil yang lebih mudah dipecahkan.</p>
+                                    <div class="text-[11px] text-cyan-200 bg-cyan-900/50 p-2 rounded-lg text-left">
+                                        <strong>Contoh:</strong> Memisahkan tahapan dalam merencanakan proyek tugas akhir atau mengurai penyebab antrean kantin.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pilar 2: Pengenalan Pola -->
+                        <div class="flip-card h-64">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-panel border border-purple-500/40 p-6 flex flex-col justify-between items-center text-center">
+                                    <div class="w-16 h-16 rounded-2xl bg-purple-500/20 text-purple-400 flex items-center justify-center text-3xl">
+                                        <i class="fa-solid fa-chart-line"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold font-code text-purple-300 text-lg">2. PENGENALAN POLA</h5>
+                                        <p class="text-xs text-gray-400 mt-2">Mendeteksi kesamaan atau tren dalam data.</p>
+                                    </div>
+                                    <span class="text-[10px] font-code text-purple-400">Putar Kartu <i class="fa-solid fa-rotate"></i></span>
+                                </div>
+                                <div class="flip-card-back glass-panel bg-purple-950/90 border border-purple-400 p-6 flex flex-col justify-center text-center space-y-2">
+                                    <h5 class="font-bold text-purple-300 font-code">Detail Pengenalan Pola</h5>
+                                    <p class="text-xs text-gray-200">Mencari pola, tren, atau kemiripan karakteristik dari data sebelumnya.</p>
+                                    <div class="text-[11px] text-purple-200 bg-purple-900/50 p-2 rounded-lg text-left">
+                                        <strong>Contoh:</strong> Mengenali jam-jam sibuk di jalan raya/kantin sekolah setiap harinya.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pilar 3: Abstraksi -->
+                        <div class="flip-card h-64">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-panel border border-emerald-500/40 p-6 flex flex-col justify-between items-center text-center">
+                                    <div class="w-16 h-16 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl">
+                                        <i class="fa-solid fa-filter"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold font-code text-emerald-300 text-lg">3. ABSTRAKSI</h5>
+                                        <p class="text-xs text-gray-400 mt-2">Menyaring informasi tidak penting & fokus pada inti.</p>
+                                    </div>
+                                    <span class="text-[10px] font-code text-emerald-400">Putar Kartu <i class="fa-solid fa-rotate"></i></span>
+                                </div>
+                                <div class="flip-card-back glass-panel bg-emerald-950/90 border border-emerald-400 p-6 flex flex-col justify-center text-center space-y-2">
+                                    <h5 class="font-bold text-emerald-300 font-code">Detail Abstraksi</h5>
+                                    <p class="text-xs text-gray-200">Mengabaikan detail kecil yang irrelevant dan hanya fokus pada variabel kunci.</p>
+                                    <div class="text-[11px] text-emerald-200 bg-emerald-900/50 p-2 rounded-lg text-left">
+                                        <strong>Contoh:</strong> Mengabaikan warna kendaraan saat menentukan rute perjalanan tercepat.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Pilar 4: Algoritma -->
+                        <div class="flip-card h-64">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front glass-panel border border-pink-500/40 p-6 flex flex-col justify-between items-center text-center">
+                                    <div class="w-16 h-16 rounded-2xl bg-pink-500/20 text-pink-400 flex items-center justify-center text-3xl">
+                                        <i class="fa-solid fa-list-check"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-bold font-code text-pink-300 text-lg">4. ALGORITMA</h5>
+                                        <p class="text-xs text-gray-400 mt-2">Merumuskan langkah terstruktur menuju solusi.</p>
+                                    </div>
+                                    <span class="text-[10px] font-code text-pink-400">Putar Kartu <i class="fa-solid fa-rotate"></i></span>
+                                </div>
+                                <div class="flip-card-back glass-panel bg-pink-950/90 border border-pink-400 p-6 flex flex-col justify-center text-center space-y-2">
+                                    <h5 class="font-bold text-pink-300 font-code">Detail Algoritma</h5>
+                                    <p class="text-xs text-gray-200">Menyusun instruksi logis berurutan langkah demi langkah untuk menyelesaikan masalah.</p>
+                                    <div class="text-[11px] text-pink-200 bg-pink-900/50 p-2 rounded-lg text-left">
+                                        <strong>Contoh:</strong> Langkah navigasi bertahap Google Maps dari rumah hingga gerbang sekolah.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study & Learning Activities -->
+                <div class="glass-panel p-6 rounded-2xl space-y-4">
+                    <h4 class="font-bold font-code text-cyan-300 flex items-center gap-2">
+                        <i class="fa-solid fa-map-location-dot"></i> Application & Learning Activities
+                    </h4>
+                    <p class="text-sm text-gray-300">
+                        <strong>Contoh Penerapan Sehari-hari:</strong> Menentukan rute terpendek dan tercepat dari rumah ke sekolah saat macet menggunakan aplikasi peta digital seperti <em>Google Maps</em> dan <em>Waze</em> (yang bekerja berdasarkan algoritma penentu rute tercepat).
+                    </p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2 text-xs">
+                        <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                            <span class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 font-code font-bold">BK-K10-01</span>
+                            <p class="mt-2 text-gray-300">Diskusi kelompok menerapkan 4 pilar pada masalah antrean kantin & mencari akar masalah dengan metode "5 Whys".</p>
+                        </div>
+                        <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                            <span class="px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 font-code font-bold">BK-K10-02</span>
+                            <p class="mt-2 text-gray-300">Kelompok 4-5 orang mengobservasi masalah nyata lingkungan sekolah, menganalisis, lalu menyusun refleksi dan aksi.</p>
+                        </div>
+                        <div class="bg-black/30 p-4 rounded-xl border border-gray-700">
+                            <span class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-code font-bold">BK-K10-03</span>
+                            <p class="mt-2 text-gray-300">Tugas Mandiri: Memilih masalah sehari-hari dan menyelesaikannya secara sistematis dengan 4 pilar BK.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERI TAB 2: ANALISIS MASALAH -->
+            <div id="materi-content-tab2" class="materi-content-block hidden space-y-8">
+                <div class="space-y-4">
+                    <h3 class="text-xl font-bold font-code text-purple-300">
+                        Sub Bab 1.2: Analisis Masalah & Berpikir Kritis
+                    </h3>
+                    <p class="text-sm text-gray-300 leading-relaxed">
+                        Berpikir kritis membantu kita menganalisis informasi secara objektif, mengidentifikasi bias, dan membuat keputusan yang tepat. Analisis masalah adalah proses sistematis dalam mengidentifikasi, memahami, dan mengevaluasi masalah untuk menemukan solusi paling efektif.
+                    </p>
+
+                    <!-- 3-Step Flowchart Stepper -->
+                    <div class="glass-panel p-6 rounded-2xl space-y-4 border border-purple-500/30">
+                        <h4 class="text-sm font-bold font-code text-purple-300 uppercase tracking-wider">
+                            <i class="fa-solid fa-diagram-project"></i> 3 Tahap Proses Analisis Masalah
+                        </h4>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 relative">
+                            <div class="bg-purple-900/20 p-4 rounded-xl border border-purple-500/30 text-center space-y-2">
+                                <div class="w-8 h-8 rounded-full bg-purple-500 text-black font-bold font-code mx-auto flex items-center justify-center">1</div>
+                                <h5 class="font-bold text-sm text-purple-300">Pengumpulan Informasi</h5>
+                                <p class="text-xs text-gray-400">Mengumpulkan data, fakta, dan informasi objektif terkait permasalahan.</p>
+                            </div>
+                            <div class="bg-purple-900/20 p-4 rounded-xl border border-purple-500/30 text-center space-y-2">
+                                <div class="w-8 h-8 rounded-full bg-purple-500 text-black font-bold font-code mx-auto flex items-center justify-center">2</div>
+                                <h5 class="font-bold text-sm text-purple-300">Identifikasi Penyebab</h5>
+                                <p class="text-xs text-gray-400">Menemukan akar masalah utama menggunakan teknik analitis (5 Whys / Fishbone).</p>
+                            </div>
+                            <div class="bg-purple-900/20 p-4 rounded-xl border border-purple-500/30 text-center space-y-2">
+                                <div class="w-8 h-8 rounded-full bg-purple-500 text-black font-bold font-code mx-auto flex items-center justify-center">3</div>
+                                <h5 class="font-bold text-sm text-purple-300">Pemilihan Strategi</h5>
+                                <p class="text-xs text-gray-400">Memilih dan menerapkan solusi yang paling efisien dan tepat sasaran.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Techniques & Ethics -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="glass-panel p-6 rounded-2xl space-y-3">
+                            <h4 class="font-bold text-cyan-400 flex items-center gap-2">
+                                <i class="fa-solid fa-magnifying-glass"></i> Teknik Analisis: "5 Whys" & Fishbone
+                            </h4>
+                            <p class="text-sm text-gray-300 leading-relaxed">
+                                <strong>Metode 5 Whys:</strong> Bertanya "mengapa" sebanyak 5 kali secara berulang untuk menggali hingga akar penyebab terdalam.
+                            </p>
+                            <p class="text-sm text-gray-300 leading-relaxed">
+                                <strong>Fishbone & Mind Map:</strong> Alat visualisai tulang ikan untuk memetakan kategori penyebab (manusia, metode, lingkungan, sistem) secara terstruktur.
+                            </p>
+                            <div class="p-3 bg-black/30 rounded-xl text-xs text-gray-400 border border-gray-700">
+                                <strong>BK-K10-04 (Mandiri):</strong> Menganalisis kasus penurunan nilai peserta didik dengan dekomposisi, pencarian pola, serta evaluasi perspektif.
+                            </div>
+                        </div>
+
+                        <div class="glass-panel p-6 rounded-2xl space-y-3 border border-pink-500/30">
+                            <h4 class="font-bold text-pink-400 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved"></i> Etika & Integritas Data
+                            </h4>
+                            <ul class="text-xs text-gray-300 space-y-2 list-disc list-inside">
+                                <li>Gunakan data dan fakta valid yang dapat dipertanggungjawabkan.</li>
+                                <li>Selalu cantumkan sumber data resmi.</li>
+                                <li>Jaga kerahasiaan data pribadi (anonimisasi).</li>
+                                <li>Hindari mengambil kesimpulan atas dasar asumsi pribadi / bias.</li>
+                                <li>Cegah rancangan solusi yang diskriminatif atau melanggar privasi.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MATERI TAB 3: SIMULASI & KA -->
+            <div id="materi-content-tab3" class="materi-content-block hidden space-y-8">
+                <div class="space-y-6">
+                    <h3 class="text-xl font-bold font-code text-emerald-300">
+                        Sub Bab 1.3: Simulasi Penyelesaian Masalah & Integrasi AI (KA)
+                    </h3>
+
+                    <!-- Part A: Simulation -->
+                    <div class="glass-panel p-6 rounded-2xl space-y-4 border border-emerald-500/30">
+                        <h4 class="font-bold text-emerald-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-vial"></i> Bagian A — Simulasi Solusi
+                        </h4>
+                        <p class="text-sm text-gray-300 leading-relaxed">
+                            Simulasi adalah menguji solusi (algoritma) langkah demi langkah untuk memastikan solusi berjalan efektif sebelum diimplementasikan secara riil.
+                        </p>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                            <div class="p-3 bg-emerald-950/40 rounded-xl border border-emerald-500/30">
+                                <strong class="text-emerald-300 block mb-1">3 Format Algoritma:</strong>
+                                1. Draf SOP berbasis teks<br>2. Flowchart visual<br>3. Storyboard video tutorial
+                            </div>
+                            <div class="p-3 bg-emerald-950/40 rounded-xl border border-emerald-500/30">
+                                <strong class="text-emerald-300 block mb-1">Langkah Simulasi:</strong>
+                                Pilih format -> Tetapkan "Skenario Uji" (misal jam sibuk) -> Pembagian peran (Pelaku & Pengamat) -> Evaluasi.
+                            </div>
+                            <div class="p-3 bg-emerald-950/40 rounded-xl border border-emerald-500/30">
+                                <strong class="text-emerald-300 block mb-1">Aktivitas BK-K10-05:</strong>
+                                Menentukan rute tercepat rumah-sekolah, simulasi langkah navigasi, estimasi waktu, & visualisasi gambar rute.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Part B: AI Integration -->
+                    <div class="glass-panel p-6 rounded-2xl space-y-6 border border-cyan-500/30">
+                        <h4 class="font-bold text-cyan-400 text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-robot"></i> Bagian B — Integrasi Kecerdasan Artifisial (KA)
+                        </h4>
+                        
+                        <!-- Table AI Role in 4 Pillars -->
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-xs text-left border-collapse">
+                                <thead>
+                                    <tr class="bg-cyan-500/20 text-cyan-300 font-code">
+                                        <th class="p-3 rounded-tl-xl">Pilar BK</th>
+                                        <th class="p-3 rounded-tr-xl">Peran Kecerdasan Artifisial (KA / AI)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-700/50 text-gray-300">
+                                    <tr>
+                                        <td class="p-3 font-semibold text-cyan-400">Dekomposisi</td>
+                                        <td class="p-3">KA membantu mengelompokkan data kompleks menjadi modul sub-sistem secara otomatis.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold text-purple-400">Pengenalan Pola</td>
+                                        <td class="p-3">KA memproses jutaan data titik untuk menemukan tren & anomali jauh lebih cepat dari manusia.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold text-emerald-400">Abstraksi</td>
+                                        <td class="p-3">Model Machine Learning menyaring noise/aspek tak penting & menyajikan indikator utama.</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="p-3 font-semibold text-pink-400">Algoritma</td>
+                                        <td class="p-3">KA menyusun rekomendasi keputusan dan optimasi rute terbaik secara real-time.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <!-- Venn Diagram (Human vs AI) using CSS/SVG -->
+                        <div class="p-6 bg-black/40 rounded-2xl border border-gray-700 space-y-4">
+                            <h5 class="text-xs font-code font-bold text-center text-cyan-300 uppercase tracking-widest">
+                                Diagram Venn: Perbandingan BK Manusia vs Kecerdasan Artifisial
+                            </h5>
+                            <div class="flex flex-col md:flex-row items-center justify-center gap-4 py-4 relative">
+                                <div class="w-full md:w-64 p-4 rounded-2xl bg-cyan-500/10 border border-cyan-500/40 text-center space-y-1">
+                                    <h6 class="font-bold text-cyan-400 text-sm">Manusia</h6>
+                                    <p class="text-[11px] text-gray-300">Kreativitas, Empati, Kesadaran Etis, Pemahaman Konteks Sosial, Moralitas.</p>
+                                </div>
+                                <div class="w-full md:w-56 p-4 rounded-2xl bg-purple-600/30 border border-purple-400 text-center space-y-1 z-10 shadow-lg">
+                                    <h6 class="font-bold text-purple-300 text-sm">IRISAN SOLUSI</h6>
+                                    <p class="text-[11px] text-purple-100">Pemecahan Masalah Sistematis, Logika Terstruktur, Evaluasi Data.</p>
+                                </div>
+                                <div class="w-full md:w-64 p-4 rounded-2xl bg-emerald-500/10 border border-emerald-500/40 text-center space-y-1">
+                                    <h6 class="font-bold text-emerald-400 text-sm">Mesin KA (AI)</h6>
+                                    <p class="text-[11px] text-gray-300">Kecepatan Komputasi Tinggi, Analisis Big Data, Bebas Kelelahan Fisik.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Activity & Ethics -->
+                        <div class="text-xs text-gray-300 space-y-2">
+                            <p><strong>Aktivitas BK-K10-06 (Kelompok):</strong> Mengidentifikasi tema masalah kompleks sehari-hari dan mempresentasikan solusi BK terintegrasi KA.</p>
+                            <p class="text-pink-400"><strong>Etika KA:</strong> Jaga orisinalitas karya, verifikasi hasil AI (cegah halusinasi data), cantumkan sumber, dan perhatikan opsi lisensi/biaya aplikasi KA.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Summary & Code Quote Box -->
+            <div class="glass-panel p-6 rounded-2xl border border-cyan-500/40 bg-gradient-to-r from-cyan-950/40 via-purple-950/40 to-emerald-950/40 space-y-4">
+                <h4 class="font-code font-bold text-cyan-300 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt"></i> RINGKASAN CEPAT BAB 1
+                </h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-3 text-xs font-code">
+                    <div class="p-2.5 rounded-xl bg-black/40 border border-cyan-500/30 text-cyan-300">
+                        1. DEKOMPOSISI = Pecah masalah
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-black/40 border border-purple-500/30 text-purple-300">
+                        2. POLA = Cari kesamaan
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-black/40 border border-emerald-500/30 text-emerald-300">
+                        3. ABSTRAKSI = Saring esensi
+                    </div>
+                    <div class="p-2.5 rounded-xl bg-black/40 border border-pink-500/30 text-pink-300">
+                        4. ALGORITMA = Susun langkah
+                    </div>
+                </div>
+                <div class="p-3 rounded-xl bg-black/60 border border-cyan-400/40 font-code text-center text-xs sm:text-sm text-cyan-400">
+                    <code>// Masalah kompleks? Pecah, kenali pola, saring, susun langkah!</code>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= PAGE 3: TUGAS AKHIR X-3 ================= -->
+        <section id="page-x3" class="page-section hidden space-y-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-gray-700/60 pb-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-code text-purple-400 flex items-center gap-3">
+                        <i class="fa-solid fa-graduation-cap"></i> CURRICULUM VITAE MURID X-3
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">
+                        Kumpulan Portofolio Tugas Akhir Bab 1 Berpikir Komputasional
+                    </p>
+                </div>
+
+                <!-- Search Input & Counter -->
+                <div class="w-full md:w-auto flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full sm:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        <input type="text" id="searchX3" oninput="filterStudents('x3')" placeholder="Cari nama siswa X-3..." 
+                               class="w-full pl-9 pr-4 py-2 rounded-xl glass-panel border border-purple-500/40 text-xs text-gray-200 focus:outline-none focus:border-purple-400 font-code">
+                    </div>
+                    <span id="counterX3" class="px-3 py-2 rounded-xl bg-purple-500/10 border border-purple-500/30 text-purple-300 text-xs font-code whitespace-nowrap">
+                        Menampilkan 36 dari 36 murid
+                    </span>
+                </div>
+            </div>
+
+            <!-- Student Cards Grid X-3 -->
+            <div id="gridX3" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                <!-- Dynamically rendered via JS -->
+            </div>
+        </section>
+
+        <!-- ================= PAGE 4: TUGAS AKHIR X-4 ================= -->
+        <section id="page-x4" class="page-section hidden space-y-8">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 border-b border-gray-700/60 pb-6">
+                <div>
+                    <h2 class="text-2xl sm:text-3xl font-bold font-code text-emerald-400 flex items-center gap-3">
+                        <i class="fa-solid fa-laptop-code"></i> CURRICULUM VITAE MURID X-4
+                    </h2>
+                    <p class="text-xs sm:text-sm text-gray-400 mt-1">
+                        Kumpulan Portofolio Tugas Akhir Bab 1 Berpikir Komputasional
+                    </p>
+                </div>
+
+                <!-- Search Input & Counter -->
+                <div class="w-full md:w-auto flex flex-col sm:flex-row items-center gap-3">
+                    <div class="relative w-full sm:w-72">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-400 text-xs"></i>
+                        <input type="text" id="searchX4" oninput="filterStudents('x4')" placeholder="Cari nama siswa X-4..." 
+                               class="w-full pl-9 pr-4 py-2 rounded-xl glass-panel border border-emerald-500/40 text-xs text-gray-200 focus:outline-none focus:border-emerald-400 font-code">
+                    </div>
+                    <span id="counterX4" class="px-3 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-xs font-code whitespace-nowrap">
+                        Menampilkan 36 dari 36 murid
+                    </span>
+                </div>
+            </div>
+
+            <!-- Student Cards Grid X-4 -->
+            <div id="gridX4" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 sm:gap-6">
+                <!-- Dynamically rendered via JS -->
+            </div>
+        </section>
+
+        <!-- ================= PAGE 5: PROFIL GURU ================= -->
+        <section id="page-guru" class="page-section hidden space-y-8">
+            <div class="text-center max-w-2xl mx-auto space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-bold font-code text-cyan-400 flex items-center justify-center gap-3">
+                    <i class="fa-solid fa-id-card"></i> PROFIL GURU PENGAMPU
+                </h2>
+                <p class="text-xs sm:text-sm text-gray-400">
+                    Mata Pelajaran Koding dan Kecerdasan Artifisial - SMAN 1 Kersana
+                </p>
+            </div>
+
+            <!-- Futuristic ID Card Container -->
+            <div class="max-w-md mx-auto glass-panel p-8 rounded-3xl border border-cyan-500/40 glow-cyan relative overflow-hidden space-y-6">
+                <!-- ID Card Header Badge -->
+                <div class="flex items-center justify-between border-b border-gray-700/60 pb-4">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-microchip text-cyan-400 text-lg"></i>
+                        <span class="font-code font-bold text-xs text-gray-300 tracking-wider">TEACHER ID CARD</span>
+                    </div>
+                    <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-[10px] font-code border border-emerald-500/30">
+                        VERIFIED INSTRUCTOR
+                    </span>
+                </div>
+
+                <!-- Teacher Profile Avatar -->
+                <div class="flex flex-col items-center space-y-4">
+                    <div class="relative group">
+                        <div class="w-32 h-32 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-purple-500 to-emerald-400 glow-cyan">
+                            <div class="w-full h-full rounded-full bg-slate-900 overflow-hidden flex items-center justify-center">
+                                <img id="teacherImg" src="" alt="Foto M. Faisal Abduh" 
+                                     onerror="handleTeacherImgError(this)" 
+                                     class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-center space-y-1">
+                        <h3 class="text-xl font-extrabold font-code text-cyan-300">M. FAISAL ABDUH, M.Pd.</h3>
+                        <p class="text-xs font-code text-purple-400 font-medium">NIP: 199104032020121014</p>
+                    </div>
+                </div>
+
+                <!-- Teacher Info Details -->
+                <div class="space-y-3 bg-black/30 p-4 rounded-2xl border border-gray-700/50 text-xs font-code">
+                    <div class="flex justify-between py-1 border-b border-gray-800">
+                        <span class="text-gray-400">Jabatan:</span>
+                        <span class="text-gray-200 font-semibold text-right">Guru Koding & KA</span>
+                    </div>
+                    <div class="flex justify-between py-1 border-b border-gray-800">
+                        <span class="text-gray-400">Satuan Pendidikan:</span>
+                        <span class="text-gray-200 font-semibold">SMA Negeri 1 Kersana</span>
+                    </div>
+                    <div class="flex justify-between py-1">
+                        <span class="text-gray-400">Kelas Pengampuan:</span>
+                        <span class="text-cyan-400 font-bold">X-3 & X-4</span>
+                    </div>
+                </div>
+
+                <!-- External CV Link Button -->
+                <a href="https://gurufa119.github.io/cv" target="_blank" rel="noopener noreferrer" 
+                   class="w-full py-3 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 via-purple-600 to-emerald-500 text-black font-code font-bold text-xs flex items-center justify-center gap-2 hover:opacity-90 hover:scale-[1.02] transition-all shadow-lg">
+                    <i class="fa-solid fa-external-link-alt"></i> LIHAT CV GURU
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FLOATING SCROLL TO TOP BUTTON (POJOK KIRI BAWAH) -->
+    <button id="scrollTopBtn" onclick="scrollToTop()" title="Naik ke Atas" 
+            class="w-12 h-12 rounded-full glass-panel border border-cyan-400/50 text-cyan-400 flex items-center justify-center shadow-lg hover:bg-cyan-500 hover:text-black transition-all glow-cyan">
+        <i class="fa-solid fa-arrow-up text-lg"></i>
+    </button>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div id="toastContent" class="glass-panel px-5 py-3 rounded-2xl border border-cyan-500/50 text-xs font-code text-cyan-300 shadow-2xl flex items-center gap-3">
+            <i class="fa-solid fa-circle-info text-base"></i>
+            <span id="toastMsg">Notifikasi</span>
+        </div>
+    </div>
+
+    <!-- FOOTER (ALL PAGES) -->
+    <footer class="mt-12 glass-panel border-t border-cyan-500/20 py-6 px-4 text-center text-xs text-gray-400 font-code">
+        <div class="max-w-7xl mx-auto space-y-2">
+            <p>© 2025/2026 SMA Negeri 1 Kersana | Koding dan Kecerdasan Artifisial</p>
+            <p class="text-cyan-400/80">Guru Pengampu: M. Faisal Abduh, M.Pd.</p>
+        </div>
+    </footer>
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // ====== VARIABLE FOTO GURU ======
+        // Isi URL foto profil guru di bawah ini jika ada.
+        const fotoGuru = "";
+
+        // ====== DATA MURID X-3 ======
+        // Isi "foto" dengan URL gambar dan "cv" dengan URL tautan CV masing-masing murid.
+        const muridX3 = [
+            { nama: "AIDZIL LUTFI AFFANDY", foto: "", cv: "" },
+            { nama: "AKMAL SAHIDIL FURKON", foto: "", cv: "" },
+            { nama: "ALIFIA ZASKIA FITRI", foto: "", cv: "" },
+            { nama: "ALZENNA CETTA FIDELYA AHMAD", foto: "", cv: "" },
+            { nama: "CAHYANI DWI MARTALITA", foto: "", cv: "" },
+            { nama: "CEMPAKA PUTRI LAKASANA", foto: "", cv: "" },
+            { nama: "CIKA FITRIYANI", foto: "", cv: "" },
+            { nama: "CITRA ASIFA JENI AULIA", foto: "", cv: "" },
+            { nama: "DEMAS RAIKHAN NURRATMAN", foto: "", cv: "" },
+            { nama: "DINDA FERNT FELIX FAUZIAH", foto: "", cv: "" },
+            { nama: "DISKA DWI ASYIFA", foto: "", cv: "" },
+            { nama: "EVA TAMALA AGUSTIN", foto: "", cv: "" },
+            { nama: "FAVI RAHMATIN NADIFA", foto: "", cv: "" },
+            { nama: "FIONA ADINDA MELISA", foto: "", cv: "" },
+            { nama: "FRINZA AYATUL HUSNA ALNADIR", foto: "", cv: "" },
+            { nama: "GENDIS ZULFA RAHMADHANI", foto: "", cv: "" },
+            { nama: "GRASIELA GUITNI ALEXSANDRA", foto: "", cv: "" },
+            { nama: "HANA KHUZIAMAH", foto: "", cv: "" },
+            { nama: "HENDRI MARHAENUDIN", foto: "", cv: "" },
+            { nama: "JELITA RACHELLIA RAMADANI", foto: "", cv: "" },
+            { nama: "KHILDA QURROTUL AINI", foto: "", cv: "" },
+            { nama: "M. SAIFUL BUKHORI", foto: "", cv: "" },
+            { nama: "MELIA SRI JANETA", foto: "", cv: "" },
+            { nama: "MUHAMAD RIZQI AMRULLAH", foto: "", cv: "" },
+            { nama: "MUHAMAD SHALAHUDIN ALIY", foto: "", cv: "" },
+            { nama: "NAJIIBAH", foto: "", cv: "" },
+            { nama: "NAJLA AQILATUNNISA", foto: "", cv: "" },
+            { nama: "NUR AMELIA RAHMADHANI", foto: "", cv: "" },
+            { nama: "NUR KOMALAH", foto: "", cv: "" },
+            { nama: "RASYA DWI PURWANTO", foto: "", cv: "" },
+            { nama: "REFLY EKA SUTRIYONO", foto: "", cv: "" },
+            { nama: "ROHADATU RIFANA", foto: "", cv: "" },
+            { nama: "SELLY RISNI NAYLA", foto: "", cv: "" },
+            { nama: "SYAEFUDIN FATURROHMAN", foto: "", cv: "" },
+            { nama: "SYLJIAN SALMA RHAMADHANY", foto: "", cv: "" },
+            { nama: "WIDIA NINGSIH", foto: "", cv: "" }
+        ];
+
+        // ====== DATA MURID X-4 ======
+        // Isi "foto" dengan URL gambar dan "cv" dengan URL tautan CV masing-masing murid.
+        const muridX4 = [
+            { nama: "ADAM RIFA GALANG PERMANA", foto: "", cv: "" },
+            { nama: "AHMAD FAOZAN MUBAROK", foto: "", cv: "" },
+            { nama: "AHMAD SHANDIKA", foto: "", cv: "" },
+            { nama: "ALESIYA SASMARA META", foto: "", cv: "" },
+            { nama: "ALFIYAH LAELATUN NIMAH", foto: "", cv: "" },
+            { nama: "ANA ISTIANAH", foto: "", cv: "" },
+            { nama: "ANAHATA CAHYA ALIFIA", foto: "", cv: "" },
+            { nama: "ANGELITA RAMADANI", foto: "", cv: "" },
+            { nama: "ARIZA NISA RAMADHANI", foto: "", cv: "" },
+            { nama: "AULIYATUN NISA", foto: "", cv: "" },
+            { nama: "BARA AZIMI", foto: "", cv: "" },
+            { nama: "DAVA ELGA AIDITYA", foto: "", cv: "" },
+            { nama: "DEFFANY NEVA AULYA", foto: "", cv: "" },
+            { nama: "DIAN MUTIARA", foto: "", cv: "" },
+            { nama: "EGI PRASETYO", foto: "", cv: "" },
+            { nama: "ELIA DWI PUTRI", foto: "", cv: "" },
+            { nama: "HAEZA YULIANTI", foto: "", cv: "" },
+            { nama: "INDYGO", foto: "", cv: "" },
+            { nama: "KAYLA KANZA AZZAHRA", foto: "", cv: "" },
+            { nama: "KRISTIAN", foto: "", cv: "" },
+            { nama: "KURNIAWAN NUR SYIFA", foto: "", cv: "" },
+            { nama: "LULU AZKIYATUL HUSNA", foto: "", cv: "" },
+            { nama: "M. NUR RIZQI ADITYA", foto: "", cv: "" },
+            { nama: "MUHAMAD RIZA PANGESTU", foto: "", cv: "" },
+            { nama: "NAJWA SAFIRATUL IHSAN", foto: "", cv: "" },
+            { nama: "NUR BAETI KHASANAH", foto: "", cv: "" },
+            { nama: "OMAY QOMARIYAH", foto: "", cv: "" },
+            { nama: "RADITHYA GALIH", foto: "", cv: "" },
+            { nama: "RAYANA DWI KHARISMAWAN", foto: "", cv: "" },
+            { nama: "REGINA AULIA PUTRI", foto: "", cv: "" },
+            { nama: "REVAN ALFA RIZKI RAMADHAN", foto: "", cv: "" },
+            { nama: "SITI NUR AZIZAH", foto: "", cv: "" },
+            { nama: "SULIS KAYYISATUL FAIZAH", foto: "", cv: "" },
+            { nama: "TIFANKA ANANDA PUTRI", foto: "", cv: "" },
+            { nama: "ULFIYANTI NURHANIFAH", foto: "", cv: "" },
+            { nama: "ZALFA AULIA", foto: "", cv: "" }
+        ];
+
+        // Toast Notification System
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toastMsg');
+            toastMsg.textContent = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+
+        // ====== FULLSCREEN API WITH TRY/CATCH ======
+        function toggleFullscreen() {
+            try {
+                const fsIcon = document.getElementById('fullscreenIcon');
+                if (!document.fullscreenElement) {
+                    if (document.documentElement.requestFullscreen) {
+                        document.documentElement.requestFullscreen();
+                    } else if (document.documentElement.webkitRequestFullscreen) {
+                        document.documentElement.webkitRequestFullscreen();
+                    }
+                    fsIcon.className = 'fa-solid fa-compress';
+                    showToast("Mode Layar Penuh Diaktifkan");
+                } else {
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    }
+                    fsIcon.className = 'fa-solid fa-expand';
+                    showToast("Keluar dari Layar Penuh");
+                }
+            } catch (err) {
+                showToast("Fullscreen tidak didukung oleh browser/iFrame ini.");
+            }
+        }
+
+        // ====== DARK / LIGHT MODE TOGGLE (WITH LOCALSTORAGE TRY/CATCH) ======
+        function initTheme() {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                    document.documentElement.classList.add('light');
+                    document.getElementById('themeIcon').className = 'fa-solid fa-sun text-amber-400';
+                } else {
+                    document.documentElement.classList.remove('light');
+                    document.documentElement.classList.add('dark');
+                    document.getElementById('themeIcon').className = 'fa-solid fa-moon text-purple-400';
+                }
+            } catch (e) {
+                // Fallback default mode gelap
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.contains('dark');
+            const themeIcon = document.getElementById('themeIcon');
+
+            if (isDark) {
+                document.documentElement.classList.remove('dark');
+                document.documentElement.classList.add('light');
+                themeIcon.className = 'fa-solid fa-sun text-amber-400';
+                showToast("Mode Terang Diaktifkan");
+                try { localStorage.setItem('theme', 'light'); } catch(e){}
+            } else {
+                document.documentElement.classList.remove('light');
+                document.documentElement.classList.add('dark');
+                themeIcon.className = 'fa-solid fa-moon text-purple-400';
+                showToast("Mode Gelap Diaktifkan");
+                try { localStorage.setItem('theme', 'dark'); } catch(e){}
+            }
+        }
+
+        // ====== PAGE SWITCHER (SPA LOGIC) ======
+        function switchPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(p => p.classList.add('hidden'));
+
+            // Show selected page
+            const targetPage = document.getElementById(`page-${pageId}`);
+            if (targetPage) {
+                targetPage.classList.remove('hidden');
+            }
+
+            // Update navbar buttons active style
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.classList.remove('bg-cyan-500', 'text-black', 'font-bold');
+                btn.classList.add('hover:bg-cyan-500/10');
+            });
+
+            const activeBtn = document.getElementById(`nav-${pageId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-cyan-500', 'text-black', 'font-bold');
+            }
+
+            // Scroll to top automatically
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // ====== SCROLL TO TOP BUTTON (BOTTOM LEFT) ======
+        window.addEventListener('scroll', () => {
+            const btn = document.getElementById('scrollTopBtn');
+            if (window.scrollY > 300) {
+                btn.classList.add('visible');
+            } else {
+                btn.classList.remove('visible');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // ====== GENERATE STUDENT CARDS & PLACEHOLDERS ======
+        function getInitials(name) {
+            return name.split(' ').map(n => n[0]).slice(0, 2).join('');
+        }
+
+        function handleImgError(imgElement, name) {
+            if (!imgElement || !imgElement.parentElement) return;
+            const parent = imgElement.parentElement;
+            const initials = getInitials(name);
+            parent.innerHTML = `
+                <div class="w-full h-full bg-gradient-to-tr from-cyan-600 via-purple-700 to-emerald-600 flex items-center justify-center text-white font-bold font-code text-sm sm:text-base">
+                    ${initials}
+                </div>
+            `;
+        }
+
+        function handleTeacherImgError(imgElement) {
+            if (!imgElement || !imgElement.parentElement) return;
+            const parent = imgElement.parentElement;
+            parent.innerHTML = `
+                <div class="w-full h-full bg-gradient-to-tr from-cyan-600 via-purple-600 to-emerald-600 flex items-center justify-center text-cyan-300 text-4xl">
+                    <i class="fa-solid fa-user-tie"></i>
+                </div>
+            `;
+        }
+
+        function renderStudentGrid(list, gridId, classCode) {
+            const grid = document.getElementById(gridId);
+            grid.innerHTML = '';
+
+            list.forEach((m, idx) => {
+                const card = document.createElement('div');
+                card.className = "cyber-card glass-panel p-4 rounded-2xl border border-gray-700/60 flex flex-col items-center text-center space-y-3 group";
+                
+                const photoSrc = m.foto && m.foto.trim() !== "" ? m.foto : null;
+                const initials = getInitials(m.nama);
+
+                let photoHtml = '';
+                if (photoSrc) {
+                    photoHtml = `<img src="${photoSrc}" alt="${m.nama}" onerror="handleImgError(this, '${m.nama}')" class="w-full h-full object-cover">`;
+                } else {
+                    photoHtml = `
+                        <div class="w-full h-full bg-gradient-to-tr from-cyan-600 via-purple-700 to-emerald-600 flex items-center justify-center text-white font-bold font-code text-sm sm:text-base">
+                            ${initials}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div class="cursor-pointer" onclick="openCV('${m.cv.replace(/'/g, "\\'")}', '${m.nama.replace(/'/g, "\\'")}')">
+                        <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-full p-[2px] bg-gradient-to-tr from-cyan-400 via-purple-500 to-emerald-400 group-hover:scale-105 transition-transform duration-300 shadow-md">
+                            <div class="w-full h-full rounded-full overflow-hidden bg-slate-900">
+                                ${photoHtml}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-1 w-full">
+                        <h4 class="text-xs sm:text-sm font-bold font-code text-gray-200 line-clamp-2 uppercase group-hover:text-cyan-400 transition-colors">
+                            ${m.nama}
+                        </h4>
+                        <span class="text-[10px] text-gray-400 font-mono block">SISWA ${classCode}</span>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function openCV(url, name) {
+            if (!url || url.trim() === "") {
+                showToast(`Tautan CV ${name} belum diisi.`);
+            } else {
+                window.open(url, '_blank', 'noopener,noreferrer');
+            }
+        }
+
+        function filterStudents(classType) {
+            const query = document.getElementById(classType === 'x3' ? 'searchX3' : 'searchX4').value.toLowerCase();
+            const sourceList = classType === 'x3' ? muridX3 : muridX4;
+            const filtered = sourceList.filter(m => m.nama.toLowerCase().includes(query));
+            
+            renderStudentGrid(filtered, classType === 'x3' ? 'gridX3' : 'gridX4', classType === 'x3' ? 'X-3' : 'X-4');
+            
+            const counter = document.getElementById(classType === 'x3' ? 'counterX3' : 'counterX4');
+            counter.textContent = `Menampilkan ${filtered.length} dari 36 murid`;
+        }
+
+        // ====== MATERI TAB SWITCHING ======
+        function switchMateriTab(tabId) {
+            const blocks = document.querySelectorAll('.materi-content-block');
+            blocks.forEach(b => b.classList.add('hidden'));
+
+            const targetBlock = document.getElementById(`materi-content-${tabId}`);
+            if (targetBlock) targetBlock.classList.remove('hidden');
+
+            const btns = document.querySelectorAll('.materi-tab-btn');
+            btns.forEach(btn => {
+                btn.classList.remove('bg-cyan-500', 'text-black');
+                btn.classList.add('text-gray-300');
+            });
+
+            const activeBtn = document.getElementById(`materi-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.add('bg-cyan-500', 'text-black');
+                activeBtn.classList.remove('text-gray-300');
+            }
+        }
+
+        // ====== TYPEWRITER EFFECT ======
+        const typewriterWords = [
+            "> Dekomposisi | Pengenalan Pola | Abstraksi | Algoritma",
+            "> Koding & Kecerdasan Artifisial SMAN 1 Kersana",
+            "> M. Faisal Abduh, M.Pd. - Guru Pengampu"
+        ];
+        let wordIdx = 0, charIdx = 0, isDeleting = false;
+
+        function typeWriter() {
+            const currentWord = typewriterWords[wordIdx];
+            const el = document.getElementById('typewriterText');
+            if (!el) return;
+
+            if (isDeleting) {
+                el.textContent = currentWord.substring(0, charIdx - 1);
+                charIdx--;
+            } else {
+                el.textContent = currentWord.substring(0, charIdx + 1);
+                charIdx++;
+            }
+
+            let typeSpeed = isDeleting ? 30 : 60;
+
+            if (!isDeleting && charIdx === currentWord.length) {
+                typeSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                wordIdx = (wordIdx + 1) % typewriterWords.length;
+                typeSpeed = 500;
+            }
+
+            setTimeout(typeWriter, typeSpeed);
+        }
+
+        // ====== SUBTLE BINARY RAIN CANVAS EFFECT ======
+        function initBinaryCanvas() {
+            const canvas = document.getElementById('binaryCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+
+            function resizeCanvas() {
+                canvas.width = canvas.parentElement.offsetWidth;
+                canvas.height = canvas.parentElement.offsetHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            const chars = "01";
+            const fontSize = 12;
+            const columns = Math.floor(canvas.width / fontSize);
+            const drops = Array(columns).fill(1);
+
+            function draw() {
+                ctx.fillStyle = "rgba(11, 15, 25, 0.15)";
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                ctx.fillStyle = "#00F0FF";
+                ctx.font = fontSize + "px 'Fira Code'";
+
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars.charAt(Math.floor(Math.random() * chars.length));
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+            }
+
+            setInterval(draw, 50);
+        }
+
+        // ====== INITIALIZE APP ON LOAD ======
+        window.onload = function() {
+            initTheme();
+            renderStudentGrid(muridX3, 'gridX3', 'X-3');
+            renderStudentGrid(muridX4, 'gridX4', 'X-4');
+            
+            // Set Teacher Photo
+            const teacherImg = document.getElementById('teacherImg');
+            if (teacherImg) {
+                if (fotoGuru && fotoGuru.trim() !== "") {
+                    teacherImg.src = fotoGuru;
+                } else {
+                    handleTeacherImgError(teacherImg);
+                }
+            }
+
+            // Start animations
+            typeWriter();
+            initBinaryCanvas();
+            switchPage('home');
+        };
+    </script>
+</body>
+</html>

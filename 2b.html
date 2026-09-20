@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="id">
+ <head><script>window["__codeletBootstrap__"]=JSON.parse('{"A":"A","B":"20260918-05-13efa67","C":{"Abril Fatface":"YACgEZbkUVE,0","Alfa Slab One":"YACgEYS9sJU,0","Anton":"YACgEcYqQ-A,0","Archivo":"YACgEZulLoA,0","Arial Narrow":"YAGyDvJ_4Ts,0","Arial Rounded MT Bold":"YAFcfoaHu-s,0","Arial":"YAGyDvJ_4Ts,0","Avenir Next":"YAFcfmNq6UY,0","Baloo 2":"YADK30bC6HQ,0","Bebas Neue":"YACgESME5ew,0","Bricolage Grotesque":"YAFyMcdwzpc,0","Broken Glyph":"YADZ-exUkv0,0","Canva Sans":"YAFdJjTk5UU,1","Caveat":"YALBs2ploWQ,0","Comic Sans MS":"YAFcfvtOAUY,1","Cormorant Garamond":"YAFdJhX-538,0","Courier New":"YAGzXiGs0_8,0","Courier Prime":"YAD1aFjegN8,0","DM Sans":"YAD1aU3sLnI,0","DM Serif Display":"YAD1aYG82rc,0","Forum":"YACgEcnnqB4,0","Fraunces":"YAFdJpU7Kkk,0","Georgia":"YAGzXkO0pEM,0","Ghost Mono":"YAHQutsX00Q,0","Hanken Grotesk":"YAFcfhwp99E,0","Helvetica Neue":"YAFcf6CtJfI,0","Helvetica":"YAFcf6CtJfI,0","IBM Plex Mono":"YAFdJkmvhGI,0","Impact":"YAFcfnjI7Vk,0","Instrument Serif":"YAHFeOnZNEk,0","Inter":"YAFdJvSyp_k,3","Iowan Old Style":"YAGNIFa8j9o,0","Jacques Francois":"YADK3zbC6RM,0","JetBrains Mono":"YAFdJksXcAk,0","Josefin Sans":"YAFdJjvw9Ps,0","Lato":"YAFdJuFCnaw,0","Libre Baskerville":"YACgEUFdPdA,0","Lobster":"YAD8SnSjSFI,0","Lora":"YACgEXvxf8Q,0","Merriweather":"YACgEXvHxxs,0","Montserrat":"YAFdtQi73Xs,0","Nunito":"YAFdJoNRMmU,1","Oleo Script":"YACgEQQ14jI,0","Oswald":"YACgEQY10lw,0","Pacifico":"YADLjORQ1u4,0","Phantom Sans":"YAFdJvgJ5TU,0","Playfair Display":"YAFdJhem5V8,1","Plus Jakarta Sans":"YAGvf3_u0_Q,0","Poppins":"YAFdJjbTu24,1","Press Start 2P":"YAFyGr-8pmQ,0","Quicksand":"YAFdJpYtCxE,1","Raleway":"YAFdJhmxbVQ,1","Roboto Slab":"YAFdJswIKAg,0","Rockwell":"YAFcfyVZnN0,0","Rye":"YACgEdQP21k,0","Segoe UI":"YAHNdRD1Klw,0","Source Sans 3":"YAG4lO1Mj10,0","Source Serif 4":"YACgEfdj394,0","Space Grotesk":"YADZ-dYEmhg,0","Space Mono":"YADW1-vpsoc,0","Times New Roman":"YAGzXW3gftg,0","Times":"YAGzXW3gftg,0","Trebuchet MS":"YAFcfrglpVA,0","UV Display":"YAEdVfSSpYo,0","UV Sans":"YAFdJvgJ5TU,0","Ubuntu":"YACgERDU--Q,0","Verdana":"YAGzXTctYtQ,0","Work Sans":"YAGXhLOKv44,0","Yellowtail":"YACgEYG4kG4,0","ui-monospace":"YAD1aFjegN8,0","ui-sans-serif":"YACkoD1yZN0,0"}}');</script><script src="/_sdk/83d6dfdadcd4750a.telemetry_sdk.js" integrity="sha512-XS4Dvzp6vbagZS9vFErihvr8aO3S0tH78KWUefn06fmL4WYqryBtZj/IOLITYj7dFA4gPVvPg1W/JB1DK3uLNQ=="></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rekap Tugas Akhir | Berpikir Komputasional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&amp;family=Poppins:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #07111f;
+      --bg2: #0b1a2c;
+      --panel: rgba(16, 34, 57, .78);
+      --panel-solid: #10243b;
+      --text: #eaf8ff;
+      --muted: #a4bdd1;
+      --line: rgba(110, 231, 255, .18);
+      --cyan: #57e6ff;
+      --violet: #a78bfa;
+      --mint: #66f4bf;
+      --shadow: 0 18px 45px rgba(0, 0, 0, .28);
+    }
+
+    body.light {
+      --bg: #edf8ff;
+      --bg2: #dceeff;
+      --panel: rgba(255, 255, 255, .82);
+      --panel-solid: #ffffff;
+      --text: #10233a;
+      --muted: #50657a;
+      --line: rgba(34, 132, 160, .2);
+      --cyan: #007fa6;
+      --violet: #6941c6;
+      --mint: #07865c;
+      --shadow: 0 18px 45px rgba(23, 76, 112, .14);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Poppins", sans-serif;
+      transition: background .3s ease, color .3s ease;
+      background-image:
+        radial-gradient(circle at 15% 10%, rgba(87, 230, 255, .14), transparent 26rem),
+        radial-gradient(circle at 85% 30%, rgba(167, 139, 250, .13), transparent 25rem);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .35;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+    }
+
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    button:focus-visible, input:focus-visible, a:focus-visible {
+      outline: 3px solid var(--mint);
+      outline-offset: 3px;
+    }
+
+    .app-wrapper { width: 100%; min-height: 100%; }
+    .code { font-family: "Fira Code", monospace; }
+    .glass {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(15px);
+    }
+
+    .nav-link {
+      border: 0;
+      background: transparent;
+      color: var(--muted);
+      padding: .65rem .75rem;
+      border-radius: .65rem;
+      font-size: .72rem;
+      letter-spacing: .08em;
+      font-weight: 700;
+      transition: .2s;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover, .nav-link.active {
+      color: var(--cyan);
+      background: rgba(87, 230, 255, .1);
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: .7rem;
+      background: var(--panel);
+      color: var(--text);
+      transition: .2s;
+    }
+
+    .icon-button:hover {
+      color: var(--cyan);
+      border-color: var(--cyan);
+      transform: translateY(-2px);
+    }
+
+    .page { display: none; animation: pageIn .45s ease; }
+    .page.active { display: block; }
+
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    .hero {
+      min-height: calc(78 * min(var(--vh, 1vh), 1vh));
+      display: grid;
+      place-items: center;
+      padding: 7rem 1.25rem 3rem;
+    }
+
+    .hero-inner { max-width: 980px; text-align: center; }
+
+    .hero-title {
+      margin: .8rem 0;
+      font-family: "Fira Code", monospace;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      background: linear-gradient(110deg, var(--cyan), #ffffff, var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .eyebrow {
+      color: var(--mint);
+      font-family: "Fira Code", monospace;
+      font-size: .82rem;
+      letter-spacing: .06em;
+    }
+
+    .muted { color: var(--muted); }
+
+    .home-cards, .pillar-grid, .student-grid {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .home-cards {
+      grid-template-columns: repeat(3, 1fr);
+      max-width: 1000px;
+      margin: 0 auto 5rem;
+      padding: 0 1.25rem;
+    }
+
+    .nav-card, .student-card {
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .nav-card:hover, .student-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--cyan);
+      box-shadow: 0 0 28px rgba(87, 230, 255, .18);
+    }
+
+    .nav-card {
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      padding: 1.6rem;
+      color: var(--text);
+      text-align: center;
+    }
+
+    .nav-card i { width: 42px; height: 42px; color: var(--cyan); margin: auto; }
+    .nav-card h3 { margin: 1rem 0 .4rem; font-family: "Fira Code", monospace; }
+
+    .content {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 7.5rem 1.25rem 4rem;
+    }
+
+    .section-title {
+      margin: 0 0 .7rem;
+      font-family: "Fira Code", monospace;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+    }
+
+    .tabs { display: flex; flex-wrap: wrap; gap: .6rem; margin: 2rem 0; }
+
+    .tab {
+      border: 1px solid var(--line);
+      border-radius: .7rem;
+      background: var(--panel);
+      color: var(--muted);
+      padding: .7rem 1rem;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .tab.active { background: var(--cyan); color: #06111c; }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; }
+
+    .article {
+      margin-bottom: 1rem;
+      border-radius: 1.1rem;
+      padding: 1.4rem;
+    }
+
+    .article h3 { color: var(--cyan); font-family: "Fira Code", monospace; }
+    .article h4 { margin-top: 1.4rem; }
+    .article p, .article li { color: var(--muted); line-height: 1.8; }
+
+    .pillar-grid { grid-template-columns: repeat(4, 1fr); }
+
+    .flip {
+      height: 220px;
+      border: 0;
+      padding: 0;
+      background: transparent;
+      color: var(--text);
+      perspective: 900px;
+    }
+
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform .65s;
+      transform-style: preserve-3d;
+    }
+
+    .flip.flipped .flip-inner { transform: rotateY(180deg); }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 1rem;
+      padding: 1.1rem;
+      text-align: center;
+      backface-visibility: hidden;
+    }
+
+    .face i { margin: 0 auto 1rem; color: var(--mint); }
+    .face h4 { margin: .3rem; font-family: "Fira Code", monospace; }
+    .back { transform: rotateY(180deg); background: linear-gradient(135deg, #123654, #29316d); }
+    .back p { color: #d6edff; font-size: .76rem; line-height: 1.55; }
+
+    .stepper { display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem; }
+    .step { border-left: 3px solid var(--cyan); border-radius: .7rem; background: rgba(87, 230, 255, .07); padding: 1rem; }
+    .step b { display: block; margin-bottom: .3rem; color: var(--cyan); }
+
+    .info-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+    .info-table th, .info-table td { border: 1px solid var(--line); padding: .75rem; text-align: left; }
+    .info-table th { color: var(--cyan); font-family: "Fira Code", monospace; }
+
+    .venn { display: flex; justify-content: center; align-items: center; min-height: 240px; }
+    .circle {
+      width: 180px;
+      height: 180px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      padding: 1rem;
+      text-align: center;
+      font-size: .8rem;
+      font-weight: 700;
+    }
+
+    .human { margin-right: -45px; background: rgba(87, 230, 255, .27); }
+    .ai { margin-left: -45px; background: rgba(167, 139, 250, .3); }
+
+    .search {
+      width: 100%;
+      max-width: 500px;
+      border: 1px solid var(--line);
+      border-radius: .8rem;
+      outline: none;
+      background: var(--panel-solid);
+      color: var(--text);
+      padding: .85rem 1rem;
+    }
+
+    .search:focus { border-color: var(--cyan); }
+
+    .student-grid { grid-template-columns: repeat(6, 1fr); margin-top: 1.5rem; }
+
+    .student-card {
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 1rem;
+      background: var(--panel);
+      color: var(--text);
+      padding: 1rem .45rem;
+      text-align: center;
+    }
+
+    .avatar {
+      width: 82px;
+      height: 82px;
+      display: grid;
+      place-items: center;
+      margin: auto;
+      overflow: hidden;
+      border: 3px solid transparent;
+      border-radius: 50%;
+      background:
+        linear-gradient(var(--panel-solid), var(--panel-solid)) padding-box,
+        linear-gradient(135deg, var(--cyan), var(--violet), var(--mint)) border-box;
+    }
+
+    .placeholder { color: var(--cyan); font-family: "Fira Code", monospace; font-size: 1.05rem; font-weight: 700; }
+    .student-name { margin-top: .7rem; font-size: .67rem; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+
+    .teacher-card { max-width: 690px; margin: 2rem auto; border-radius: 1.4rem; padding: 2rem; text-align: center; }
+    .teacher-avatar { width: 145px; height: 145px; }
+    .info-row { display: grid; grid-template-columns: 140px 1fr; gap: 1rem; border-bottom: 1px solid var(--line); padding: .75rem; text-align: left; }
+    .info-row b { color: var(--cyan); }
+
+    .primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .6rem;
+      border: 0;
+      border-radius: .8rem;
+      background: linear-gradient(100deg, var(--cyan), var(--mint));
+      color: #062030;
+      padding: .9rem 1.1rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .primary:hover { filter: brightness(1.08); }
+
+    #toTop {
+      position: fixed;
+      bottom: 1.4rem;
+      left: 1.4rem;
+      z-index: 40;
+      display: none;
+      width: 48px;
+      height: 48px;
+      place-items: center;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--cyan), var(--violet));
+      color: #06111c;
+      box-shadow: 0 8px 25px rgba(87, 230, 255, .28);
+    }
+
+    #toTop.show { display: grid; }
+
+    #toast {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.4rem;
+      z-index: 70;
+      max-width: 330px;
+      border: 1px solid var(--cyan);
+      border-radius: .8rem;
+      background: #10263f;
+      color: #ffffff;
+      box-shadow: var(--shadow);
+      padding: .9rem 1rem;
+      font-size: .85rem;
+      opacity: 0;
+      transform: translateY(110px);
+      transition: .3s;
+    }
+
+    #toast.show { opacity: 1; transform: none; }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 1.5rem;
+      color: var(--muted);
+      text-align: center;
+      font-size: .75rem;
+    }
+
+    @media (max-width: 900px) {
+      .student-grid { grid-template-columns: repeat(4, 1fr); }
+      .pillar-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 720px) {
+      .home-cards, .stepper { grid-template-columns: 1fr; }
+      .student-grid { grid-template-columns: repeat(2, 1fr); }
+      .info-row { grid-template-columns: 1fr; gap: .2rem; }
+      .mobile-menu { display: none; }
+      .mobile-menu.open {
+        position: absolute;
+        top: 64px;
+        right: 1rem;
+        left: 1rem;
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+      .nav-link { width: 100%; font-size: .78rem; text-align: left; }
+    }
+
+    @media (min-width: 721px) {
+      #menuBtn { display: none !important; }
+    }
+  </style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.577.0/dist/umd/lucide.min.js" type="text/javascript"></script>
+  <script src="/_sdk/8de366929c5f3b48.data_sdk.js" type="text/javascript" integrity="sha512-TyQ8k8cZj66xe/aENmn6RyZpdOFZXbAo5+KBG3PeFM+Q4qMTHU8xAqmq4ADClNfPrstgQYV6OzZHwLTnElzB2g=="></script>
+  <script src="/_sdk/0ddbbee1c66b1212.editing_sdk.js" type="text/javascript" integrity="sha512-HQn5LM1yruQSbY78ATUril6QeOJ9xj7KqO64ltLtb4vBwI5Qv3/tloFFOndBPZTNZoeV5xKzuth5y6FTi9crsg=="></script>
+  <script src="/_sdk/765e1fea0cec97ce.resizing_sdk.js" type="text/javascript" integrity="sha512-IRTJnqww0+HQ5V/LlWEQrlD5SrYHaVvaeVoNe8HYQXoaguzUGheSd9+n9s6WOgaTcEH0g37DuINHZ9aqfzWjlw=="></script>
+ </head>
+ <body data-template-id="__page-root">
+  <div class="app-wrapper">
+   <header class="fixed top-0 left-0 right-0 z-50 px-3 py-3">
+    <nav class="glass relative mx-auto flex max-w-7xl items-center gap-2 rounded-2xl px-3 py-2" aria-label="Navigasi utama"><button type="button" class="mr-auto px-2 text-left" onclick="showPage('home')" aria-label="Ke beranda"> <span class="code text-xs font-bold" style="color:var(--cyan)">&lt;/KKA&gt;</span> </button>
+     <div id="navMenu" class="mobile-menu glass items-center gap-1 md:flex"><button class="nav-link active" data-page="home" type="button">HOME</button> <button class="nav-link" data-page="materi" type="button">MATERI</button> <button class="nav-link" data-page="x3" type="button">TUGAS AKHIR X-3</button> <button class="nav-link" data-page="x4" type="button">TUGAS AKHIR X-4</button> <button class="nav-link" data-page="guru" type="button">PROFIL GURU</button>
+     </div><button id="fullscreenBtn" class="icon-button" type="button" aria-label="Mode layar penuh"> <i data-lucide="maximize"></i> </button> <button id="themeBtn" class="icon-button" type="button" aria-label="Ubah mode tema"> <i data-lucide="sun"></i> </button> <button id="menuBtn" class="icon-button" type="button" aria-label="Buka menu"> <i data-lucide="menu"></i> </button>
+    </nav>
+   </header>
+   <main>
+    <section id="home" class="page active" aria-labelledby="home-title">
+     <div class="hero">
+      <div class="hero-inner">
+       <p class="eyebrow">&gt;&gt; SMA NEGERI 1 KERSANA / KODING &amp; KA</p>
+       <h1 id="home-title" data-template-id="home-title" class="canva-text hero-title">REKAP TUGAS AKHIR BAB 1 BERPIKIR KOMPUTASIONAL</h1>
+       <p data-template-id="home-subtitle" class="canva-text muted mx-auto max-w-3xl">KODING DAN KECERDASAN ARTIFISIAL SMA KELAS X-3 DAN X-4</p>
+       <p data-template-id="home-teacher" class="canva-text mt-5 text-sm font-semibold">SMA NEGERI 1 KERSANA • Guru Pengampu: M. FAISAL ABDUH, M.Pd.</p>
+       <div class="glass code mt-8 inline-block rounded-xl px-5 py-4 text-sm" style="color:var(--mint)"><span id="typing"></span><span class="animate-pulse">|</span>
+       </div>
+      </div>
+     </div>
+     <section class="home-cards" aria-label="Akses cepat"><button type="button" class="nav-card glass" onclick="showPage('materi')"> <i data-lucide="book-open-check"></i> <h2>MATERI</h2><p class="muted text-sm">Pelajari konsep, analisis, simulasi, dan etika kecerdasan artifisial.</p></button> <button type="button" class="nav-card glass" onclick="showPage('x3')"> <i data-lucide="laptop-minimal-check"></i> <h2>TUGAS AKHIR X-3</h2><p class="muted text-sm">Akses rekap Curriculum Vitae murid kelas X-3.</p></button> <button type="button" class="nav-card glass" onclick="showPage('x4')"> <i data-lucide="laptop-minimal-check"></i> <h2>TUGAS AKHIR X-4</h2><p class="muted text-sm">Akses rekap Curriculum Vitae murid kelas X-4.</p></button>
+     </section>
+    </section>
+    <section id="materi" class="page" aria-labelledby="materi-title">
+     <div class="content">
+      <p class="eyebrow">// Bab 1: Berpikir Komputasional</p>
+      <h1 id="materi-title" data-template-id="materi-title" class="canva-text section-title">MATERI BAB 1: BERPIKIR KOMPUTASIONAL</h1>
+      <p class="muted max-w-4xl">Tujuan pembelajaran: peserta didik mampu menjelaskan berpikir komputasional, analisis masalah, simulasi solusi kompleks, serta integrasinya dengan kecerdasan artifisial.</p>
+      <div class="tabs" role="tablist" aria-label="Submateri berpikir komputasional"><button class="tab active" type="button" data-tab="sub1" role="tab" aria-selected="true">1.1 Penerapan</button> <button class="tab" type="button" data-tab="sub2" role="tab" aria-selected="false">1.2 Analisis Masalah</button> <button class="tab" type="button" data-tab="sub3" role="tab" aria-selected="false">1.3 Simulasi &amp; KA</button>
+      </div>
+      <article id="sub1" class="tab-content active" role="tabpanel">
+       <div class="article glass">
+        <h2>1.1 Penerapan Berpikir Komputasional</h2>
+        <p>Berpikir komputasional adalah pendekatan berpikir kritis, sistematis, dan terstruktur untuk menganalisis masalah, membaginya menjadi bagian kecil, lalu menyusun solusi yang efisien serta dapat dijalankan oleh manusia maupun mesin.</p>
+        <h3>Empat Pilar Berpikir Komputasional</h3>
+        <p>Klik atau tekan Enter pada kartu untuk melihat penjelasannya.</p>
+        <div class="pillar-grid"><button type="button" class="flip" aria-pressed="false">
+          <div class="flip-inner">
+           <div class="face glass"><i data-lucide="split"></i>
+            <h4>DEKOMPOSISI</h4>
+           </div>
+           <div class="face back">
+            <p>Membagi masalah besar menjadi unit kecil yang lebih mudah dipecahkan, misalnya memisahkan tahapan dalam merencanakan proyek.</p>
+           </div>
+          </div></button> <button type="button" class="flip" aria-pressed="false">
+          <div class="flip-inner">
+           <div class="face glass"><i data-lucide="scan-search"></i>
+            <h4>POLA</h4>
+           </div>
+           <div class="face back">
+            <p>Mendeteksi kesamaan atau tren dalam data, misalnya mengenali waktu sibuk di jalan raya.</p>
+           </div>
+          </div></button> <button type="button" class="flip" aria-pressed="false">
+          <div class="flip-inner">
+           <div class="face glass"><i data-lucide="filter"></i>
+            <h4>ABSTRAKSI</h4>
+           </div>
+           <div class="face back">
+            <p>Menyaring informasi yang tidak perlu dan fokus pada aspek penting, misalnya saat memilih rute perjalanan.</p>
+           </div>
+          </div></button> <button type="button" class="flip" aria-pressed="false">
+          <div class="flip-inner">
+           <div class="face glass"><i data-lucide="workflow"></i>
+            <h4>ALGORITMA</h4>
+           </div>
+           <div class="face back">
+            <p>Merumuskan langkah sistematis untuk mencapai solusi, seperti urutan tindakan menyelesaikan tugas harian.</p>
+           </div>
+          </div></button>
+        </div>
+        <h3>Contoh Kegiatan</h3>
+        <ul>
+         <li><b>BK-K10-01:</b> Diskusi kelompok mengenai masalah antrean kantin dan teknik 5 Whys.</li>
+         <li><b>BK-K10-02:</b> Observasi masalah sekitar, refleksi, dan rancangan aksi kelompok.</li>
+         <li><b>BK-K10-03:</b> Penyelesaian mandiri satu masalah sehari-hari menggunakan empat pilar.</li>
+        </ul>
+       </div>
+      </article>
+      <article id="sub2" class="tab-content" role="tabpanel">
+       <div class="article glass">
+        <h2>1.2 Analisis Masalah</h2>
+        <p>Analisis masalah merupakan proses sistematis untuk mengidentifikasi, memahami, dan mengevaluasi suatu permasalahan. Proses ini melibatkan pengumpulan informasi, pencarian penyebab utama, serta pemilihan strategi penyelesaian yang paling sesuai.</p>
+        <div class="stepper">
+         <div class="step"><b>01 — Kumpulkan Informasi</b> <span class="muted text-sm">Catat fakta dan sumber data yang relevan.</span>
+         </div>
+         <div class="step"><b>02 — Identifikasi Akar</b> <span class="muted text-sm">Gunakan teknik 5 Whys untuk menemukan penyebab utama.</span>
+         </div>
+         <div class="step"><b>03 — Terapkan Strategi</b> <span class="muted text-sm">Pilih dan uji solusi terbaik secara bertanggung jawab.</span>
+         </div>
+        </div>
+        <h3>Etika Data dan Kolaborasi</h3>
+        <ul>
+         <li>Gunakan data yang valid dan jelas sumbernya.</li>
+         <li>Jaga privasi data pribadi melalui anonimisasi bila diperlukan.</li>
+         <li>Hindari bias dan solusi yang diskriminatif.</li>
+         <li>Gunakan kesalahan atau bug sebagai bagian dari proses iterasi.</li>
+         <li>Berikan umpan balik dengan bahasa yang sopan dan membangun.</li>
+        </ul>
+       </div>
+      </article>
+      <article id="sub3" class="tab-content" role="tabpanel">
+       <div class="article glass">
+        <h2>1.3 Simulasi Penyelesaian Masalah &amp; Integrasi KA</h2>
+        <h3>Simulasi Solusi</h3>
+        <p>Simulasi menguji algoritma langkah demi langkah untuk memastikan solusi dapat berjalan. Peserta didik dapat menggunakan draf SOP teks, flowchart visual, atau storyboard video tutorial.</p>
+        <ol class="muted leading-8">
+         <li>Pilih format algoritma yang akan diuji.</li>
+         <li>Tetapkan skenario, misalnya jam sibuk atau kejadian tak terduga.</li>
+         <li>Jalankan simulasi dengan peran pelaku dan pengamat.</li>
+         <li>Evaluasi hasil, temukan bug, kemudian lakukan iterasi perbaikan.</li>
+        </ol>
+        <h3>Peran KA dalam Empat Pilar</h3>
+        <div class="overflow-x-auto">
+         <table class="info-table">
+          <thead>
+           <tr>
+            <th>Pilar</th>
+            <th>Peran KA</th>
+           </tr>
+          </thead>
+          <tbody>
+           <tr>
+            <td>Dekomposisi</td>
+            <td>Membantu mengelompokkan bagian masalah dan data.</td>
+           </tr>
+           <tr>
+            <td>Pengenalan Pola</td>
+            <td>Menemukan pola data dengan cepat pada data dalam skala besar.</td>
+           </tr>
+           <tr>
+            <td>Abstraksi</td>
+            <td>Merangkum informasi penting dari data yang kompleks.</td>
+           </tr>
+           <tr>
+            <td>Algoritma</td>
+            <td>Membantu memberi rekomendasi langkah atau prediksi.</td>
+           </tr>
+          </tbody>
+         </table>
+        </div>
+        <div class="venn" aria-label="Perbandingan manusia dan kecerdasan artifisial">
+         <div class="circle human">
+          MANUSIA<br><small>konteks, empati, nilai</small>
+         </div>
+         <div class="circle ai">
+          KA<br><small>pola, kecepatan, skala</small>
+         </div>
+        </div>
+        <div class="mt-5 rounded-xl border p-5" style="background:rgba(102,244,191,.1);border-color:var(--mint)"><b style="color:var(--mint)">RINGKASAN CEPAT</b>
+         <p class="mb-0">Dekomposisi • Pengenalan Pola • Abstraksi • Algoritma</p>
+         <p class="code mb-0" style="color:var(--cyan)">// Masalah kompleks? Pecah, kenali pola, saring, susun langkah!</p>
+        </div>
+       </div>
+      </article>
+     </div>
+    </section>
+    <section id="x3" class="page" aria-labelledby="x3-title">
+     <div class="content">
+      <p class="eyebrow">// Rekap CV Kelas X-3</p>
+      <h1 id="x3-title" class="section-title">CURRICULUM VITAE MURID X-3</h1><label class="sr-only" for="searchX3">Cari murid kelas X-3</label> <input id="searchX3" class="search" type="search" placeholder="Cari nama murid..." autocomplete="off">
+      <p id="countX3" class="muted mt-4 text-sm" aria-live="polite"></p>
+      <div id="gridX3" class="student-grid"></div>
+     </div>
+    </section>
+    <section id="x4" class="page" aria-labelledby="x4-title">
+     <div class="content">
+      <p class="eyebrow">// Rekap CV Kelas X-4</p>
+      <h1 id="x4-title" class="section-title">CURRICULUM VITAE MURID X-4</h1><label class="sr-only" for="searchX4">Cari murid kelas X-4</label> <input id="searchX4" class="search" type="search" placeholder="Cari nama murid..." autocomplete="off">
+      <p id="countX4" class="muted mt-4 text-sm" aria-live="polite"></p>
+      <div id="gridX4" class="student-grid"></div>
+     </div>
+    </section>
+    <section id="guru" class="page" aria-labelledby="teacher-title">
+     <div class="content">
+      <p class="eyebrow">// teacher.profile()</p>
+      <h1 id="teacher-title" data-template-id="teacher-title" class="canva-text section-title text-center">PROFIL GURU PENGAMPU</h1>
+      <div class="teacher-card glass">
+       <div class="avatar teacher-avatar"><span class="placeholder">MFA</span>
+       </div>
+       <h2 class="code mt-5 text-xl" style="color:var(--cyan)">M. FAISAL ABDUH, M.Pd.</h2>
+       <p class="muted mb-6 text-sm">ID CARD DIGITAL — GURU PENGAMPU</p>
+       <div class="info-row">
+        <b>NIP</b><span>199104032020121014</span>
+       </div>
+       <div class="info-row">
+        <b>Jabatan</b><span>Guru Pengampu Mata Pelajaran Koding dan Kecerdasan Artifisial</span>
+       </div>
+       <div class="info-row">
+        <b>Satuan Pendidikan</b><span>SMA Negeri 1 Kersana</span>
+       </div>
+       <div class="info-row">
+        <b>Kelas Diampu</b><span>X-3 dan X-4</span>
+       </div><a class="primary mt-7" href="https://gurufa119.github.io/cv" target="_blank" rel="noopener noreferrer"> <i data-lucide="file-user"></i> LIHAT CV GURU </a>
+      </div>
+     </div>
+    </section>
+   </main>
+   <footer data-template-id="footer-text" class="canva-footer">
+    © 2025/2026 SMA Negeri 1 Kersana | Koding dan Kecerdasan Artifisial | Guru Pengampu: M. Faisal Abduh, M.Pd.
+   </footer><button id="toTop" type="button" aria-label="Naik ke atas"> <i data-lucide="rocket"></i> </button>
+   <div id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <script>
+    const muridX3 = `AIDZIL LUTFI AFFANDY|AKMAL SAHIDIL FURKON|ALIFIA ZASKIA FITRI|ALZENNA CETTA FIDELYA AHMAD|CAHYANI DWI MARTALITA|CEMPAKA PUTRI LAKASANA|CIKA FITRIYANI|CITRA ASIFA JENI AULIA|DEMAS RAIKHAN NURRATMAN|DINDA FERNT FELIX FAUZIAH|DISKA DWI ASYIFA|EVA TAMALA AGUSTIN|FAVI RAHMATIN NADIFA|FIONA ADINDA MELISA|FRINZA AYATUL HUSNA ALNADIR|GENDIS ZULFA RAHMADHANI|GRASIELA GUITNI ALEXSANDRA|HANA KHUZIAMAH|HENDRI MARHAENUDIN|JELITA RACHELLIA RAMADANI|KHILDA QURROTUL AINI|M. SAIFUL BUKHORI|MELIA SRI JANETA|MUHAMAD RIZQI AMRULLAH|MUHAMAD SHALAHUDIN ALIY|NAJIIBAH|NAJLA AQILATUNNISA|NUR AMELIA RAHMADHANI|NUR KOMALAH|RASYA DWI PURWANTO|REFLY EKA SUTRIYONO|ROHADATU RIFANA|SELLY RISNI NAYLA|SYAEFUDIN FATURROHMAN|SYLJIAN SALMA RHAMADHANY|WIDIA NINGSIH`
+      .split("|")
+      .map(nama => ({ nama }));
+
+    const muridX4 = `ADAM RIFA GALANG PERMANA|AHMAD FAOZAN MUBAROK|AHMAD SHANDIKA|ALESIYA SASMARA META|ALFIYAH LAELATUN NIMAH|ANA ISTIANAH|ANAHATA CAHYA ALIFIA|ANGELITA RAMADANI|ARIZA NISA RAMADHANI|AULIYATUN NISA|BARA AZIMI|DAVA ELGA AIDITYA|DEFFANY NEVA AULYA|DIAN MUTIARA|EGI PRASETYO|ELIA DWI PUTRI|HAEZA YULIANTI|INDYGO|KAYLA KANZA AZZAHRA|KRISTIAN|KURNIAWAN NUR SYIFA|LULU AZKIYATUL HUSNA|M. NUR RIZQI ADITYA|MUHAMAD RIZA PANGESTU|NAJWA SAFIRATUL IHSAN|NUR BAETI KHASANAH|OMAY QOMARIYAH|RADITHYA GALIH|RAYANA DWI KHARISMAWAN|REGINA AULIA PUTRI|REVAN ALFA RIZKI RAMADHAN|SITI NUR AZIZAH|SULIS KAYYISATUL FAIZAH|TIFANKA ANANDA PUTRI|ULFIYANTI NURHANIFAH|ZALFA AULIA`
+      .split("|")
+      .map(nama => ({ nama }));
+
+    const toast = document.getElementById("toast");
+    let toastTimer;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 3000);
+    }
+
+    function initials(nama) {
+      return nama
+        .replace(/[.]/g, "")
+        .split(/\s+/)
+        .slice(0, 2)
+        .map(kata => kata[0])
+        .join("");
+    }
+
+    function createStudentCard(item) {
+      const card = document.createElement("button");
+      const avatar = document.createElement("div");
+      const placeholder = document.createElement("span");
+      const name = document.createElement("div");
+
+      card.type = "button";
+      card.className = "student-card";
+      card.title = "CV " + item.nama;
+      card.setAttribute("aria-label", "Lihat CV " + item.nama);
+
+      avatar.className = "avatar";
+      placeholder.className = "placeholder";
+      placeholder.textContent = initials(item.nama);
+      avatar.appendChild(placeholder);
+
+      name.className = "student-name";
+      name.textContent = item.nama;
+
+      card.append(avatar, name);
+      card.addEventListener("click", () => showToast("Tautan CV untuk " + item.nama + " belum diisi."));
+      return card;
+    }
+
+    function renderStudents(data, gridId, countId, query = "") {
+      const normalizedQuery = query.toLowerCase().trim();
+      const filtered = data.filter(item => item.nama.toLowerCase().includes(normalizedQuery));
+      const grid = document.getElementById(gridId);
+
+      grid.replaceChildren();
+      filtered.forEach(item => grid.appendChild(createStudentCard(item)));
+
+      document.getElementById(countId).textContent = "Menampilkan " + filtered.length + " dari " + data.length + " murid";
+    }
+
+    function showPage(id) {
+      document.querySelectorAll(".page").forEach(page => page.classList.toggle("active", page.id === id));
+      document.querySelectorAll(".nav-link").forEach(button => button.classList.toggle("active", button.dataset.page === id));
+      document.getElementById("navMenu").classList.remove("open");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    document.querySelectorAll(".nav-link").forEach(button => {
+      button.addEventListener("click", () => showPage(button.dataset.page));
+    });
+
+    document.getElementById("menuBtn").addEventListener("click", () => {
+      document.getElementById("navMenu").classList.toggle("open");
+    });
+
+    document.querySelectorAll(".tab").forEach(button => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".tab").forEach(tab => {
+          const active = tab === button;
+          tab.classList.toggle("active", active);
+          tab.setAttribute("aria-selected", String(active));
+        });
+
+        document.querySelectorAll(".tab-content").forEach(content => {
+          content.classList.toggle("active", content.id === button.dataset.tab);
+        });
+      });
+    });
+
+    document.querySelectorAll(".flip").forEach(card => {
+      card.addEventListener("click", () => {
+        const flipped = card.classList.toggle("flipped");
+        card.setAttribute("aria-pressed", String(flipped));
+      });
+    });
+
+    document.getElementById("searchX3").addEventListener("input", event => {
+      renderStudents(muridX3, "gridX3", "countX3", event.target.value);
+    });
+
+    document.getElementById("searchX4").addEventListener("input", event => {
+      renderStudents(muridX4, "gridX4", "countX4", event.target.value);
+    });
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    function refreshIcons() {
+      if (window.lucide) window.lucide.createIcons();
+    }
+
+    function setTheme(light) {
+      document.body.classList.toggle("light", light);
+      themeBtn.innerHTML = '<i data-lucide="' + (light ? "moon" : "sun") + '"></i>';
+
+      try {
+        localStorage.setItem("kka-theme", light ? "light" : "dark");
+      } catch (error) {}
+
+      refreshIcons();
+    }
+
+    try {
+      setTheme(localStorage.getItem("kka-theme") === "light");
+    } catch (error) {
+      setTheme(false);
+    }
+
+    themeBtn.addEventListener("click", () => {
+      setTheme(!document.body.classList.contains("light"));
+    });
+
+    document.getElementById("fullscreenBtn").addEventListener("click", async () => {
+      try {
+        if (!document.fullscreenElement) {
+          await document.documentElement.requestFullscreen();
+        } else {
+          await document.exitFullscreen();
+        }
+      } catch (error) {
+        showToast("Mode layar penuh tidak didukung pada browser ini.");
+      }
+    });
+
+    document.addEventListener("fullscreenchange", () => {
+      const fullscreenBtn = document.getElementById("fullscreenBtn");
+      fullscreenBtn.innerHTML = '<i data-lucide="' + (document.fullscreenElement ? "minimize" : "maximize") + '"></i>';
+      refreshIcons();
+    });
+
+    window.addEventListener("scroll", () => {
+      document.getElementById("toTop").classList.toggle("show", window.scrollY > 300);
+    });
+
+    document.getElementById("toTop").addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    const words = ["Dekomposisi", "Pengenalan Pola", "Abstraksi", "Algoritma"];
+    let wordIndex = 0;
+    let characterIndex = 0;
+    let deleting = false;
+
+    function typeLoop() {
+      const word = words[wordIndex];
+      const text = deleting ? word.slice(0, --characterIndex) : word.slice(0, ++characterIndex);
+      document.getElementById("typing").textContent = "> " + text;
+
+      if (!deleting && characterIndex === word.length) {
+        deleting = true;
+        setTimeout(typeLoop, 1200);
+        return;
+      }
+
+      if (deleting && characterIndex === 0) {
+        deleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+
+      setTimeout(typeLoop, deleting ? 45 : 90);
+    }
+
+    renderStudents(muridX3, "gridX3", "countX3");
+    renderStudents(muridX4, "gridX4", "countX4");
+    typeLoop();
+    refreshIcons();
+  </script>
+ </body>
+</html>
