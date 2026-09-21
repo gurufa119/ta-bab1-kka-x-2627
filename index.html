@@ -844,7 +844,7 @@
                         <i class="fa-solid fa-file-pen"></i> EVALUASI BAB 1: BERPIKIR KOMPUTASIONAL
                     </h2>
                     <p class="text-xs sm:text-sm text-gray-400 mt-1">
-                        Ujian Pemahaman Interaktif (Waktu Mengerjakan: 36 Menit | Maksimal Skor: 100)
+                        Ujian Pemahaman Interaktif (Waktu Mengerjakan: 30 Menit | Maksimal Skor: 100)
                     </p>
                 </div>
                 <div class="glass-panel px-4 py-2 rounded-xl border border-pink-500/40 text-xs font-code text-pink-300 flex items-center gap-2">
@@ -888,7 +888,7 @@
 
                     <div class="p-4 rounded-2xl bg-pink-950/30 border border-pink-500/30 text-pink-200 text-[11px] leading-relaxed space-y-1">
                         <strong class="block text-pink-400 font-bold"><i class="fa-solid fa-triangle-exclamation mr-1"></i> PEMBERITAHUAN UJIAN:</strong>
-                        <p>1. Waktu pengerjaan adalah <strong>36 menit</strong> secara acak otomatis menghitung mundur.</p>
+                        <p>1. Waktu pengerjaan adalah <strong>30 menit</strong> secara acak otomatis menghitung mundur.</p>
                         <p>2. Jika waktu habis, sistem akan menutup lembar soal & langsung mengkalkulasi skor akhir.</p>
                         <p>3. Pastikan memeriksa seluruh jawaban sebelum mengklik tombol kumpul.</p>
                     </div>
@@ -917,7 +917,7 @@
                         <i class="fa-solid fa-clock text-pink-400 text-xl animate-pulse"></i>
                         <div>
                             <span class="text-[10px] font-mono text-gray-400 block uppercase tracking-wider">Sisa Waktu</span>
-                            <span id="examTimer" class="font-code font-bold text-lg sm:text-xl text-pink-400">36:00</span>
+                            <span id="examTimer" class="font-code font-bold text-lg sm:text-xl text-pink-400">30:00</span>
                         </div>
                     </div>
                 </div>
@@ -1600,7 +1600,7 @@
 
         // ====== STATE VARIABLES UNTUK EVALUASI ======
         let examTimerInterval = null;
-        let timeRemainingSeconds = 36 * 60; // 36 Menit
+        let timeRemainingSeconds = 30 * 60; // 30 Menit
         let currentStudent = { nama: "", absen: "", kelas: "" };
         let isExamActive = false;
 
@@ -1834,7 +1834,7 @@
         // ====== TYPEWRITER EFFECT ======
         const typewriterWords = [
             "> Dekomposisi | Pengenalan Pola | Abstraksi | Algoritma",
-            "> Evaluasi Bab 1 Berpikir Komputasional - 36 Menit",
+            "> Evaluasi Bab 1 Berpikir Komputasional - 30 Menit",
             "> Koding & Kecerdasan Artifisial SMA Negeri 1 Kersana"
         ];
         let wordIdx = 0, charIdx = 0, isDeleting = false;
@@ -2071,7 +2071,7 @@
             document.getElementById('evalExamSpace').classList.remove('hidden');
 
             isExamActive = true;
-            timeRemainingSeconds = 36 * 60; // 36 Menit
+            timeRemainingSeconds = 30 * 60; // 30 Menit
             updateTimerDisplay();
 
             // Start Countdown Timer
@@ -2222,8 +2222,8 @@
             // Render Result Summary Card
             document.getElementById('resStudentName').textContent = currentStudent.nama.toUpperCase();
             
-            const timeSpentMins = Math.floor((36 * 60 - timeRemainingSeconds) / 60);
-            const timeSpentSecs = (36 * 60 - timeRemainingSeconds) % 60;
+            const timeSpentMins = Math.floor((30 * 60 - timeRemainingSeconds) / 60);
+            const timeSpentSecs = (30 * 60 - timeRemainingSeconds) % 60;
             document.getElementById('resStudentMeta').textContent = `Kelas: ${currentStudent.kelas} | No. Absen: ${currentStudent.absen} | Durasi Pengerjaan: ${timeSpentMins} m ${timeSpentSecs} s`;
             
             document.getElementById('resTotalScore').textContent = totalScore;
